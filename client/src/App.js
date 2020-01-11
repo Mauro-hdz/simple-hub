@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
-import Menu from './components/menu';
+// import Menu from './components/menu';
 import Sidebar from './components/sidebar';
-import MenuIcon from './components/menuIcon';
 import Nav from './components/navbar';
+import Contacts from './pages/contacts';
 
 class App extends Component {
 
@@ -31,7 +30,9 @@ class App extends Component {
               sidebarVisible={this.state.visible}
               >
               <Switch>
-                <Route path='/contacts' exact><h1>Hello goofball</h1></Route>
+                <Route path='/contacts' exact>
+                  <Contacts />
+                </Route>
                 <Route path='/meetings' exact><h1>Hello doofus</h1></Route>
                 <Route path='/tasks' exact><h1>Hello smart one</h1></Route>
               </Switch>

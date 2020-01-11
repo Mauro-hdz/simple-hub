@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Icon, Grid, Menu, Segment, Sidebar } from 'semantic-ui-react';
+import { Header, Icon, Grid, Menu, Segment, Sidebar, Container} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 
 
@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 const SidebarMenu = (props) => { 
     
     return (
-        <Sidebar.Pushable as={Segment}>
+        <Sidebar.Pushable>
           <Sidebar
             as={Menu}
             animation='push'
@@ -18,7 +18,7 @@ const SidebarMenu = (props) => {
             visible={props.sidebarVisible}
             width='wide'
           >
-            <Header as='h2' color={'blue'}>SimpleHut</Header>
+            <Menu.Header as='h2' className='ui blue'>SimpleHut</Menu.Header>
             <Link to='/contacts'>
             <Menu.Item as='a'>
               <Icon name='user' />
@@ -43,10 +43,10 @@ const SidebarMenu = (props) => {
     
           <Sidebar.Pusher>
             <Segment basic>
-            <Grid.Column stretched width={12}>
-                <Segment>
+            <Grid.Column  width={12}>
+                <Container>
                     {props.children}
-                </Segment>
+                </Container>
             </Grid.Column>
             </Segment>
           </Sidebar.Pusher>

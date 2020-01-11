@@ -5,7 +5,7 @@ const Nav =  (props) => {
 let activeItem = '';
     return (
       <div>
-        <Menu secondary>
+        <Menu color={'blue'} inverted secondary>
           <Menu.Item
             position={'left'}
             onClick={() => props.onClick()}
