@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
-// import Menu from './components/menu';
 import Sidebar from './components/sidebar';
 import Nav from './components/navbar';
 import Contacts from './pages/contacts';
 import Meetings from './pages/meetings';
+import Tasks from './pages/tasks';
 
 class App extends Component {
 
@@ -34,8 +34,14 @@ class App extends Component {
                 <Route path='/contacts' exact>
                   <Contacts />
                 </Route>
-                <Route path='/meetings' exact><Meetings /></Route>
-                <Route path='/tasks' exact><h1>Hello smart one</h1></Route>
+
+                <Route path='/meetings' exact>
+                    <Meetings />
+                </Route>
+                
+                <Route path='/tasks' exact>
+                    <Tasks />
+                </Route>
               </Switch>
               </Sidebar>
             </Router>
