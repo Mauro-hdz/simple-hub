@@ -1,8 +1,8 @@
 import React from 'react'
 import { Table } from 'semantic-ui-react'
 
-const ContactsTable = () => (
-  <Table basic='very'>
+const ContactsTable = (props) => (
+  <Table basic='very' size='large' className='margin-top'>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell>Name</Table.HeaderCell>

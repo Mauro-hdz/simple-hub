@@ -5,19 +5,19 @@ import './App.css';
 import Sidebar from './components/sidebar';
 import Nav from './components/navbar';
 import Contacts from './pages/contacts';
+import Meetings from './pages/meetings';
 
 class App extends Component {
 
   state = {
-    visible: true
+    visible: true,
+    container: 'no-left-margin'
   };
 
-  componentDidMount() {
-    console.log('this is app, houston we are connected')
-  }
 
   onClick = () => {
-    this.state.visible === true? this.setState({visible: false}) : this.setState({visible: true});
+    if (this.state.visible === true) {this.setState({visible: false, container: 'ui container'})} 
+    else {this.setState({visible: true, container: 'no-left-margin'})}
   };
 
   render() {
@@ -28,16 +28,15 @@ class App extends Component {
             <Nav onClick={this.onClick} />
             <Sidebar
               sidebarVisible={this.state.visible}
+              className={this.state.container}
               >
               <Switch>
                 <Route path='/contacts' exact>
                   <Contacts />
                 </Route>
-                <Route path='/meetings' exact><h1>Hello doofus</h1></Route>
+                <Route path='/meetings' exact><Meetings /></Route>
                 <Route path='/tasks' exact><h1>Hello smart one</h1></Route>
               </Switch>
-
-
               </Sidebar>
             </Router>
       </div>

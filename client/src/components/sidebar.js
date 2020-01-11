@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Icon, Grid, Menu, Segment, Sidebar, Container} from 'semantic-ui-react';
+import {Icon, Grid, Menu, Segment, Sidebar, Container} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 
 
@@ -13,28 +13,27 @@ const SidebarMenu = (props) => {
             animation='push'
             icon='labeled'
             inverted
-            onHide={props.some}
             vertical
             visible={props.sidebarVisible}
             width='wide'
           >
-            <Menu.Header as='h2' className='ui blue'>SimpleHut</Menu.Header>
+            <Menu.Header as='h1' className='ui blue'>SimpleHut</Menu.Header>
             <Link to='/contacts'>
-            <Menu.Item as='a'>
+            <Menu.Item header={true} as='a'>
               <Icon name='user' />
               Contacts
             </Menu.Item>
             </Link>
 
             <Link to='/meetings'>
-            <Menu.Item as='a'>
+            <Menu.Item header={true} as='a'>
               <Icon name='calendar' />
               Meetings
             </Menu.Item>
             </Link>
 
             <Link to='/tasks'>
-            <Menu.Item as='a'>
+            <Menu.Item header={true} as='a'>
               <Icon name='tasks' />
               Tasks
             </Menu.Item>
@@ -43,11 +42,11 @@ const SidebarMenu = (props) => {
     
           <Sidebar.Pusher>
             <Segment basic>
-            <Grid.Column  width={12}>
-                <Container>
+            <Grid.Row className={props.className}>
+                {/* <Grid.Column  width={4}> */}
                     {props.children}
-                </Container>
-            </Grid.Column>
+            {/* </Grid.Column> */}
+            </Grid.Row>
             </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
