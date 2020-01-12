@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Header, Modal, Form, Grid} from 'semantic-ui-react';
-import MaskedInput from 'react-text-mask';
+import InputMask from 'react-input-mask';
 
 const ModalContacts = (props) => (
   <Modal trigger={props.trigger}>
@@ -12,11 +12,18 @@ const ModalContacts = (props) => (
                 <Form.Input label='Last Name' placeholder='Last Name' />
             </Form.Group>
             <Form.Group>
+                <Form.Input label='Job Title' placeholder='i.e accountant' />
+            </Form.Group>
+            <Form.Group>
                 <Grid.Row>
-                <Grid.Column width={6}>
-                    <MaskedInput />
-                </Grid.Column>
-                </Grid.Row>                
+                    <Grid.Column className='ui field' width={12}>
+                    <label>Phone Number</label>
+                    <Form.Input placeholder='(100)-100-1000' as={InputMask} mask='(999)-999-9999' />
+                    </Grid.Column>
+                </Grid.Row>
+            </Form.Group>
+            <Form.Group>
+                <Form.Input label='Email' placeholder='Parker@StarkIndustries.com' />
             </Form.Group>
         </Form>
       <Modal.Description>
