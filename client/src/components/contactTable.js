@@ -2,7 +2,7 @@ import React from 'react'
 import { Table } from 'semantic-ui-react'
 
 const ContactsTable = (props) => (
-  <Table basic='very' size='large' className='margin-top'>
+  <Table basic='very' size='large' className='margin-top bg-white'>
     <Table.Header>
       <Table.Row>
         <Table.HeaderCell>Name</Table.HeaderCell>

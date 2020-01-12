@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Grid} from 'semantic-ui-react';
+import {Header, Grid, Button, Menu} from 'semantic-ui-react';
 import MeetingCard from '../components/meetingCard';
 
 const Meetings = () => {
@@ -7,7 +7,14 @@ const Meetings = () => {
         <div>
             <Grid>
                 <Grid.Row>
-                <Header as='h1' size='huge' floated='left'>Meetings</Header>
+                    <Menu secondary>
+                        <Menu.Item>
+                        <Header as='h1' size='huge' floated='left'>Meetings</Header>
+                        </Menu.Item>
+                        <Menu.Item>
+                        <Button color='orange' floated='left' inverted>+ New Meeting</Button>
+                        </Menu.Item>
+                    </Menu>
                 </Grid.Row>
             </Grid>
             <Grid>

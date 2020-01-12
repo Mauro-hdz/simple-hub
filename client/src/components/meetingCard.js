@@ -1,27 +1,26 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
 
-const items = [
-  {
-    header: 'Project Report - April',
-    description:
-      'Leverage agile frameworks to provide a robust synopsis for high level overviews.',
-    meta: 'ROI: 30%',
-  },
-  {
-    header: 'Project Report - May',
-    description:
-      'Bring to the table win-win survival strategies to ensure proactive domination.',
-    meta: 'ROI: 34%',
-  },
-  {
-    header: 'Project Report - June',
-    description:
-      'Capitalise on low hanging fruit to identify a ballpark value added activity to beta test.',
-    meta: 'ROI: 27%',
-  },
-]
 
-const MeetingCard = () => <Card.Group items={items} />
+const MeetingCard = () => {
+    return (
+        <div>
+            <Card>
+                <Card.Content>
+                <Card.Header>Consultation</Card.Header>
+                <Card.Meta>Austin, Tx</Card.Meta>
+                <Card.Description>FRI. 14 Feb @ 10:30 AM</Card.Description>
+                </Card.Content>
+                <Card.Content>
+                    Attending:
+                    <Card.Meta>Richard, Jane, Steve</Card.Meta>
+                </Card.Content>
+                <Card.Content as='button' className='bg-blue' inverted extra>
+                 <Card.Description>Details</Card.Description>
+                </Card.Content>
+            </Card>
+        </div>
+    )
+}
 
 export default MeetingCard;

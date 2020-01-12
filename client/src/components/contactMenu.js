@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { Input, Menu, Button } from 'semantic-ui-react'
-
+import React, { Component } from 'react';
+import { Input, Menu, Button, Header} from 'semantic-ui-react';
+import ModalContacts from './modal';
 const ContactMenu = () => {
 //   state = { activeItem: 'home' }
 
@@ -10,10 +10,15 @@ const ContactMenu = () => {
     return (
       <Menu secondary>
         <Menu.Item>
-        <Button content='Create Contact' color='orange' inverted/>
+          <Header as='h1' floated='left' size='huge'>Contacts</Header>
+        </Menu.Item>
+        <Menu.Item>
+          <ModalContacts trigger={
+          <Button content='+ New Contact' color='orange' floated='left' inverted/>
+            } />
         </Menu.Item>
         <Menu.Menu position='right'>
-          <Menu.Item>
+          <Menu.Item position='right'>
             <Input icon='search' placeholder='Search...' />
           </Menu.Item>
         </Menu.Menu>
