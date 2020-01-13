@@ -54,6 +54,10 @@
   margin-top: 10% !important;
 }
 
+.margin-top-button {
+  margin-top: 3% !important;
+}
+
 .bg-blue {
   transition: 1s;
 }

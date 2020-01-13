@@ -18,7 +18,7 @@ const SidebarMenu = (props) => {
             width='wide'
           >
             <Menu.Header as='h1' className='ui blue'>SimpleHut</Menu.Header>
-            <Link to='/contacts'>
+            <Link to='/'>
             <Menu.Item header={true} as='a'>
               <Icon name='user' />
               Contacts

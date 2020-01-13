@@ -9,7 +9,7 @@ const MeetingCard = () => {
                 <Card.Content>
                 <Card.Header>Consultation</Card.Header>
                 <Card.Meta>Austin, Tx</Card.Meta>
-                <Card.Description>FRI. 14 Feb @ 10:30 AM</Card.Description>
+                <Card.Description>14 Feb @ 10:30 AM</Card.Description>
                 </Card.Content>
                 <Card.Content>
                     Attending:

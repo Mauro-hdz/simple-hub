@@ -1,6 +1,7 @@
 import React from 'react';
 import {Header, Grid, Button, Menu} from 'semantic-ui-react';
 import MeetingCard from '../components/meetingCard';
+import MeetingModal from '../components/meetingModal';
 
 const Meetings = () => {
     return (
@@ -12,7 +13,9 @@ const Meetings = () => {
                         <Header as='h1' size='huge' floated='left'>Meetings</Header>
                         </Menu.Item>
                         <Menu.Item>
-                        <Button color='orange' floated='left' inverted>+ New Meeting</Button>
+                            <MeetingModal trigger={
+                            <Button color='orange' floated='left' inverted>+ New Meeting</Button>
+                                    } />
                         </Menu.Item>
                     </Menu>
                 </Grid.Row>

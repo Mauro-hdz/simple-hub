@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button, Header, Modal, Form, Grid} from 'semantic-ui-react';
+import { Button, Header, Modal, Form, Grid, Icon} from 'semantic-ui-react';
 import InputMask from 'react-input-mask';
 
-const ModalContacts = (props) => (
-  <Modal trigger={props.trigger}>
+const ContactModal = (props) => (
+  <Modal trigger={props.trigger} size='tiny'>
     <Modal.Header>Add A New Contact</Modal.Header>
     <Modal.Content>
         <Form>
@@ -26,16 +26,16 @@ const ModalContacts = (props) => (
                 <Form.Input label='Email' placeholder='Parker@StarkIndustries.com' />
             </Form.Group>
         </Form>
-      <Modal.Description>
-        <Header>Default Profile Image</Header>
-        <p>
-          We've found the following gravatar image associated with your e-mail
-          address.
-        </p>
-        <p>Is it okay to use this photo?</p>
-      </Modal.Description>
+        <Modal.Actions>
+            {/* <Button color='red'>
+                <Icon name='remove' /> Cancel
+            </Button> */}
+            <Button color='green'>
+                <Icon name='checkmark' /> Submit
+            </Button>
+        </Modal.Actions>
     </Modal.Content>
   </Modal>
 )
 
-export default ModalContacts;
+export default ContactModal;

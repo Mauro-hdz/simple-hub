@@ -31,7 +31,7 @@ class App extends Component {
               className={this.state.container}
               >
               <Switch>
-                <Route path='/contacts' exact>
+                <Route path='/' exact>
                   <Contacts />
                 </Route>
 
