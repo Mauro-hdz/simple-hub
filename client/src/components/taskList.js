@@ -7,8 +7,7 @@ const TaskList = () => (
       <List.Content floated='right'>
         <Button>Add</Button>
       </List.Content>
-      <Image avatar src='https://react.semantic-ui.com/images/avatar/small/lena.png' />
-      <List.Content>Lena</List.Content>
+      <List.Content floated='left'>Lena</List.Content>
     </List.Item>
     <List.Item>
       <List.Content floated='right'>
