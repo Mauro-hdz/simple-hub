@@ -1,0 +1,1 @@
+rdm_string = 'test string'
