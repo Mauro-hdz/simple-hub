@@ -1,10 +1,15 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-@app.route('/')
+meeting = {
+    'date': '02-12-2020',
+    'attending': 'bob, dylan, mary, sue'
+}
+
+@app.route('/', methods=['GET'])
 def hello():
-    return 'Hello Earthling!'
+    return jsonify(meeting)
 
 if __name__ == '__main__':
     app.debug = True
