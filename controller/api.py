@@ -1,13 +1,13 @@
 from flask import jsonify
+
 def api(app):
     @app.route('/api/dog')
-    def dictionary():
-        dog = {
-            'dog': 'pitbull',
-            'age': 3,
-            'color': 'brown'
+    def fish():
+        fish = {
+            'type': 'goldfish'
         }
-        return jsonify(dog)
+        return jsonify(fish)
+    
 
     @app.route('/api/cat')
     def cat():

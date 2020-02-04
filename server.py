@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from DB.test import rdm_string      #this is how to import another file in Python
-from routes.api import api
+from controller.api import api
 app = Flask(__name__)
 
 meeting = {
