@@ -17,7 +17,7 @@ const SidebarMenu = (props) => {
             visible={props.sidebarVisible}
             width='wide'
           >
-            <Menu.Header as='h1' className='ui blue'>SimpleHut</Menu.Header>
+            <Menu.Header as='h1' className='ui blue'>SimpleSpot</Menu.Header>
             <Link to='/'>
             <Menu.Item header={true} as='a'>
               <Icon name='user' />

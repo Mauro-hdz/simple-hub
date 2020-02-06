@@ -1,19 +1,13 @@
 from flask import Flask, jsonify
-from DB.test import rdm_string      #this is how to import another file in Python
-from controller.api import api
+from DB.connection import engine     
+from controller.api import api    #importing our routes
 app = Flask(__name__)
 
-meeting = {
-    'date': '02-12-2020',
-    'attending': 'bob, dylan, mary, sue',
-    'random_string': rdm_string
-}
-
-@app.route('/', methods=['GET'])
-def hello():
-    return jsonify(meeting)
-
-api(app)
+connection = engine.connect()
+if connection:
+    print('Database is successfully connected!')
+    
+api(app)  #initializing routes
 
 if __name__ == '__main__':
     app.debug = True
