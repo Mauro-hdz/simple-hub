@@ -8,5 +8,3 @@ password = os.environ['MYSQL_PW']
 user = os.environ['USER_NAME']
 
 engine = create_engine('mysql+mysqlconnector://' + user + ':' + password + '@127.0.0.1:3306/simplehub_db') 
-#add the uri for mysql db with username and p
-# #add dotenv/secret for pw and username

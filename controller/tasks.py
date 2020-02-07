@@ -1,7 +1,7 @@
 from flask import jsonify
 
-def api(app):
-    @app.route('/api/dog')
+def meeting_api(app):
+    @app.route('/api/task/all')
     def fish():
         fish = {
             'type': 'goldfish'
@@ -9,7 +9,7 @@ def api(app):
         return jsonify(fish)
     
 
-    @app.route('/api/cat')
+    @app.route('/api/task/add')
     def cat():
         cat = {
             'cat': 'lynx',
@@ -18,9 +18,10 @@ def api(app):
         }
         return jsonify(cat)
 
-    @app.route('/api/bird')
-    def bird():
+    @app.route('/api/task/delete/<id>')
+    def bird(id):
         bird = {
+            'id': id,
             'bird': 'canary',
             'age': 1,
             'color': 'yellow'
