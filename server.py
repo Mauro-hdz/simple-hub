@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from DB.connection import engine     
-from controller.meetings import meeting_api    #importing our routes
+from controller import meetings, contacts, tasks   #importing our routes
 from sqlalchemy.orm import sessionmaker
 
 app = Flask(__name__)
@@ -14,7 +14,8 @@ if connection:
     print('Database is successfully connected!')
 
     
-meeting_api(app, session)  #initializing routes
+meetings.meeting_api(app, session)  #initializing routes
+contacts.contact_api(app, session)
 
 if __name__ == '__main__':
     app.debug = True

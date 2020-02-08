@@ -58,13 +58,14 @@ def meeting_api(app, session):
             session.add(new_meeting)
             session.commit()
             print(meeting, 'Added To The Database Successfully.')
-            return 'Instance added to the database.'
+            return 'Instance added successfully'
 
 
     @app.route('/api/meeting/update/<id>', methods=['PUT'])
     def update_meeting(id):
         if request.method == 'PUT':
             update_this = session.query(Meeting).filter(Meeting.id == id).first()
+            
             update_this.subject = request.form.get('subject')
             update_this.location = request.form.get('location')
             update_this.date = request.form.get('date')
