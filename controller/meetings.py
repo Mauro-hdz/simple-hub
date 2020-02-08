@@ -5,17 +5,18 @@ def meeting_api(app, session):
     @app.route('/api/meeting/one/<id>', methods=['GET'])
     def one_meeting(id):
         if request.method == 'GET':
-           for keys in session.query(Meeting).filter(Meeting.id == id):
-               response = {
-                   'subject': keys.subject,
-                   'location': keys.location,
-                   'date': keys.date,
-                   'time': keys.time,
-                   'attending': keys.attending,
-                   'id': keys.id
-               }
-               print(response, 'Instance was found.')
-               return jsonify(response)
+           instance_found = session.query(Meeting).filter(Meeting.id == id).first()
+           response = {
+               'subject': instance_found.subject,
+               'location': instance_found.location,
+               'date': instance_found.date,
+               'time': instance_found.time,
+               'attending': instance_found.attending,
+               'id': instance_found.id
+           }
+           print(response, f'Instance with id: {id} was found.')
+           return jsonify(response)
+
            
     @app.route('/api/meeting/all', methods=['GET'])
     def all_meetings():
@@ -57,7 +58,21 @@ def meeting_api(app, session):
             session.add(new_meeting)
             session.commit()
             print(meeting, 'Added To The Database Successfully.')
-            return jsonify(meeting)
+            return 'Instance added to the database.'
+
+
+    @app.route('/api/meeting/update/<id>', methods=['PUT'])
+    def update_meeting(id):
+        if request.method == 'PUT':
+            update_this = session.query(Meeting).filter(Meeting.id == id).first()
+            update_this.subject = request.form.get('subject')
+            update_this.location = request.form.get('location')
+            update_this.date = request.form.get('date')
+            update_this.time = request.form.get('time')
+            update_meeting.attending = request.form.get('attending')
+            session.commit()
+            return f'Meeting with id: {id} was updated.'
+
 
     @app.route('/api/meeting/delete/<id>', methods=['DELETE'])
     def delete_meeting(id):
