@@ -42,11 +42,11 @@ def meeting_api(app, session):
     def add_meeting():
         if request.method == 'POST':
             meeting = {
-                'subject': request.form.get('subject'),
-                'location': request.form.get('location'),
-                'date': request.form.get('date'),
-                'time': request.form.get('time'),
-                'attending': request.form.get('attending')
+                'subject': request.json.get('subject'),
+                'location': request.json.get('location'),
+                'date': request.json.get('date'),
+                'time': request.json.get('time'),
+                'attending': request.json.get('attending')
             }
             new_meeting = Meeting(
                 meeting['subject'],
@@ -66,11 +66,11 @@ def meeting_api(app, session):
         if request.method == 'PUT':
             update_this = session.query(Meeting).filter(Meeting.id == id).first()
             
-            update_this.subject = request.form.get('subject')
-            update_this.location = request.form.get('location')
-            update_this.date = request.form.get('date')
-            update_this.time = request.form.get('time')
-            update_meeting.attending = request.form.get('attending')
+            update_this.subject = request.json.get('subject')
+            update_this.location = request.json.get('location')
+            update_this.date = request.json.get('date')
+            update_this.time = request.json.get('time')
+            update_meeting.attending = request.json.get('attending')
             session.commit()
             return f'Meeting with id: {id} was updated.'
 

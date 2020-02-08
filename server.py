@@ -16,6 +16,7 @@ if connection:
     
 meetings.meeting_api(app, session)  #initializing routes
 contacts.contact_api(app, session)
+tasks.task_api(app, session)
 
 if __name__ == '__main__':
     app.debug = True

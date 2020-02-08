@@ -8,8 +8,10 @@ class Task(Base):
 
     id = Column(Integer, primary_key=True)
     task = Column(String(400))
+    category = Column(String(25))
     completed = Column(Boolean)
 
-    def __init__(self, task, completed):
+    def __init__(self, task, category, completed):
         self.task = task
+        self.category = category
         self.completed = completed
