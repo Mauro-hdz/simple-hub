@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Header, Modal, Form, Grid, Icon} from 'semantic-ui-react';
+import { Button, Modal, Form, Grid, Icon} from 'semantic-ui-react';
 import InputMask from 'react-input-mask';
 
 const ContactModal = (props) => (

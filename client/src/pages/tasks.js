@@ -1,5 +1,6 @@
 import React from 'react';
 import TaskList from '../components/taskList';
+import TaskModal from '../components/taskModal';
 import {Header, Grid, Menu, Button} from 'semantic-ui-react';
 
 const Tasks = () => {
@@ -12,7 +13,9 @@ const Tasks = () => {
                     <Header as='h1' size='huge' floated='left'>Tasks</Header>
                     </Menu.Item>
                     <Menu.Item>
-                    <Button color='orange' inverted>+ New Task</Button>
+                        <TaskModal trigger={
+                        <Button color='orange' inverted>+ New Task</Button>
+                        } />
                     </Menu.Item>
                 </Menu>
             </Grid.Row>

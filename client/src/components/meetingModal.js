@@ -54,7 +54,7 @@ onChangePerson = () => {
                           <label>Add People</label>
                           <Form.Input id='person-input' value={this.state.person} onChange={this.onChangePerson} placeholder='i.e Elon Musk' />
                       </Form.Field>
-                        <Button id='add-person' className='margin-top-button' onClick={this.onClickAddPerson} color='green'>Add Person</Button>                     
+                      <Button id='add-person' className='margin-top-button' onClick={this.onClickAddPerson} color='green'>Add Person</Button>  
                   </Form.Group>
               </Form>
               <List>

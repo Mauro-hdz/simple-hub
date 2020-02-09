@@ -25,24 +25,24 @@ class App extends Component {
       <div className="App">
        
             <Router>
-            <Nav onClick={this.onClick} />
-            <Sidebar
-              sidebarVisible={this.state.visible}
-              className={this.state.container}
-              >
-              <Switch>
-                <Route path='/' exact>
-                  <Contacts />
-                </Route>
+              <Nav onClick={this.onClick} />
+              <Sidebar
+                sidebarVisible={this.state.visible}
+                className={this.state.container}
+                >
+                <Switch>
+                  <Route path='/' exact>
+                    <Contacts />
+                  </Route>
 
-                <Route path='/meetings' exact>
+                  <Route path='/meetings' exact>
                     <Meetings />
-                </Route>
+                  </Route>
                 
-                <Route path='/tasks' exact>
+                  <Route path='/tasks' exact>
                     <Tasks />
-                </Route>
-              </Switch>
+                  </Route>
+                </Switch>
               </Sidebar>
             </Router>
       </div>
