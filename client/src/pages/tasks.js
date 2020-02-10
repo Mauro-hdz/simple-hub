@@ -45,6 +45,6 @@ const Tasks = () => {
             </List>
         </div>
     )
-}
+};
 
 export default Tasks;

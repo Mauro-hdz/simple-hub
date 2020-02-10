@@ -42,11 +42,11 @@ def contact_api(app, session):
     def add_contact():
         if request.method == 'POST':
             contact = {
-                'name': request.json.get('name'),
-                'title': request.json.get('title'),
-                'email': request.json.get('email'),
-                'phone_number': request.json.get('phoneNumber'),
-                'note': request.json.get('note')
+                'name': request.form.get('name'),
+                'title': request.form.get('title'),
+                'email': request.form.get('email'),
+                'phone_number': request.form.get('phoneNumber'),
+                'note': request.form.get('note')
             }
             new_contact = Contact(
                 contact['name'],
@@ -66,11 +66,11 @@ def contact_api(app, session):
         if request.method == 'PUT':
             instance_found = session.query(Contact).filter_by(id=id).first()
 
-            instance_found.name = request.json.get('name')
-            instance_found.title = request.json.get('title')
-            instance_found.email = request.json.get('email')
-            instance_found.phone_number = request.json.get('phoneNumber')
-            instance_found.note = request.json.get('note')
+            instance_found.name = request.form.get('name')
+            instance_found.title = request.form.get('title')
+            instance_found.email = request.form.get('email')
+            instance_found.phone_number = request.form.get('phoneNumber')
+            instance_found.note = request.form.get('note')
             session.commit()  
             return f'Contact with id: {id} was updated.'         
 

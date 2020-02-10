@@ -29,6 +29,6 @@ const Meetings = () => {
 
         </div>
     )
-}
+};
 
 export default Meetings;

@@ -38,9 +38,9 @@ def task_api(app, session):
     def add_task():
         if request.method == 'POST':
             new_task = Task(
-                request.json.get('task'),
-                request.json.get('category'),
-                request.json.get('completed')
+                request.form.get('task'),
+                request.form.get('category'),
+                request.form.get('completed')
             )
             session.add(new_task)
             session.commit()
@@ -53,9 +53,9 @@ def task_api(app, session):
         if request.method == 'PUT':
             update_this = session.query(Task).filter(Task.id == id).first()
             
-            update_this.task = request.json.get('task')
-            update_this.category = request.json.get('category')
-            update_this.completed = request.json.get('completed')
+            update_this.task = request.form.get('task')
+            update_this.category = request.form.get('category')
+            update_this.completed = request.form.get('completed')
             session.commit()
             print(update_this, f'Task with id: {id} was updated.')
             return f'Task with id: {id} was updated.'
