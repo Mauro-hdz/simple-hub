@@ -39,6 +39,8 @@
   }
 }
 
+/* CSS Begins Here */
+
 .no-left-margin {
   margin-left: 20px !important;
   margin-right: auto !important;
@@ -64,6 +66,11 @@
 .bg-blue:hover {
   background-color: rgb(0, 162, 255) !important;
   color: white !important;
+}
+
+.task-card {
+  margin-top: 10px !important;
+  border-radius: 20px !important;
 }
 
 /* .input-mask {

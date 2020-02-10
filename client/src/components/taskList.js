@@ -1,35 +1,49 @@
 import React from 'react';
-import { Button, Image, List } from 'semantic-ui-react';
+import { List, Card, Grid, Icon, Form, Checkbox } from 'semantic-ui-react';
 
 const TaskList = () => (
-  <List divided verticalAlign='middle'>
-    <List.Item>
-      <List.Content floated='right'>
-        <Button>Add</Button>
-      </List.Content>
-      <List.Content floated='left'>Lena</List.Content>
-    </List.Item>
-    <List.Item>
-      <List.Content floated='right'>
-        <Button>Add</Button>
-      </List.Content>
-      <Image avatar src='https://react.semantic-ui.com/images/avatar/small/lindsay.png' />
-      <List.Content>Lindsay</List.Content>
-    </List.Item>
-    <List.Item>
-      <List.Content floated='right'>
-        <Button>Add</Button>
-      </List.Content>
-      <Image avatar src='https://react.semantic-ui.com/images/avatar/small/mark.png' />
-      <List.Content>Mark</List.Content>
-    </List.Item>
-    <List.Item>
-      <List.Content floated='right'>
-        <Button>Add</Button>
-      </List.Content>
-      <Image avatar src='https://react.semantic-ui.com/images/avatar/small/molly.png' />
-      <List.Content>Molly</List.Content>
-    </List.Item>
+  <List verticalAlign='middle' className="margin-top">
+	<Card fluid color='blue' className="task-card">
+      <Card.Content>
+        <Grid columns='4'>
+			<Grid.Row>
+				<Grid.Column>
+					<h4>Completed</h4>
+				</Grid.Column>
+				<Grid.Column>
+					<h4>Task</h4>
+				</Grid.Column>
+				<Grid.Column>
+					<h4>Category</h4>
+				</Grid.Column>
+				<Grid.Column>
+					<h4>Delete</h4>
+				</Grid.Column>
+			</Grid.Row>
+        </Grid>
+      </Card.Content>
+    </Card>
+	{/* Begin rendering task cards here */}
+    <Card fluid color='red' className="task-card">
+      <Card.Content>
+        <Grid columns='4'>
+			<Grid.Row>
+				<Grid.Column>
+					<Checkbox label="Completed" />
+				</Grid.Column>
+				<Grid.Column>
+					<Card.Header as="h4">Onboard new developer</Card.Header>
+				</Grid.Column>
+				<Grid.Column>
+					<Card.Content>IT</Card.Content>
+				</Grid.Column>
+				<Grid.Column>
+					<Icon name="trash alternate outline" color="red" size="large" />
+				</Grid.Column>
+			</Grid.Row>
+        </Grid>
+      </Card.Content>
+    </Card>
   </List>
 )
 
