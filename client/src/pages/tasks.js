@@ -1,7 +1,7 @@
 import React from 'react';
-import TaskList from '../components/taskList';
-import TaskModal from '../components/taskModal';
-import {Header, Grid, Menu, Button} from 'semantic-ui-react';
+import TaskModal from '../components/TaskModal';
+import TaskCard from '../components/TaskCard';
+import {Header, Grid, Menu, Button, List, Card } from 'semantic-ui-react';
 
 const Tasks = () => {
     return (
@@ -20,7 +20,29 @@ const Tasks = () => {
                     </Menu>
                 </Grid.Row>
             </Grid>
-            <TaskList />
+            <List verticalAlign='middle' className="margin-top">
+                <Card fluid color='blue' className="task-card">
+                    <Card.Content>
+                        <Grid columns='4'>
+                            <Grid.Row>
+                                <Grid.Column>
+                                    <h4>Completed</h4>
+                                </Grid.Column>
+                                <Grid.Column>
+                                    <h4>Task</h4>
+                                </Grid.Column>
+                                <Grid.Column>
+                                    <h4>Category</h4>
+                                </Grid.Column>
+                                <Grid.Column>
+                                    <h4>Delete</h4>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                    </Card.Content>
+                </Card>
+	        {/* Begin rendering task cards here */}
+            </List>
         </div>
     )
 }

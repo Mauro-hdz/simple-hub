@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
-import Sidebar from './components/sidebar';
-import Nav from './components/navbar';
+import Sidebar from './components/Sidebar';
+import Nav from './components/Navbar';
 import Contacts from './pages/contacts';
 import Meetings from './pages/meetings';
 import Tasks from './pages/tasks';

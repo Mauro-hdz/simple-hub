@@ -1,7 +1,7 @@
 import React from 'react';
 import {Header, Grid, Button, Menu} from 'semantic-ui-react';
-import MeetingCard from '../components/meetingCard';
-import MeetingModal from '../components/meetingModal';
+import MeetingCard from '../components/MeetingCard';
+import MeetingModal from '../components/MeetingModal';
 
 const Meetings = () => {
     return (

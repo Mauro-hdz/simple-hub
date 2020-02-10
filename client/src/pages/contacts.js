@@ -1,6 +1,6 @@
 import React from 'react'
 import { Menu, Button, Header, Input, Table } from 'semantic-ui-react'
-import ContactModal from '../components/contactModal';
+import ContactModal from '../components/ContactModal';
 
 const Contacts = () => {
     return (
