@@ -22,7 +22,8 @@ const Meetings = () => {
             </Grid>
             <Grid>
                 <Grid.Row>
-                <MeetingCard />
+                    {/* Render all meeting cards here */}
+                    <MeetingCard />
                 </Grid.Row>
             </Grid>
 

@@ -15,7 +15,7 @@ const MeetingCard = () => {
                     Attending:
                     <Card.Meta>Richard, Jane, Steve</Card.Meta>
                 </Card.Content>
-                <Card.Content as='button' className='bg-blue' inverted extra>
+                <Card.Content as='button' className='bg-blue' extra>
                  <Card.Description>Details</Card.Description>
                 </Card.Content>
             </Card>

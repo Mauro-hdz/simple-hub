@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Card, Grid, Icon, Form, Checkbox } from 'semantic-ui-react';
+import { List, Card, Grid, Icon, Checkbox } from 'semantic-ui-react';
 
 const TaskList = () => (
   <List verticalAlign='middle' className="margin-top">
