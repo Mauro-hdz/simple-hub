@@ -6,6 +6,8 @@ import Nav from './components/Navbar';
 import Contacts from './pages/contacts';
 import Meetings from './pages/meetings';
 import Tasks from './pages/tasks';
+import EditMeeting from './pages/editMeeting';
+import EditContact from './pages/editContact';
 
 class App extends Component {
 
@@ -25,25 +27,33 @@ class App extends Component {
       <div className="App">
        
             <Router>
-              <Nav onClick={this.onClick} />
-              <Sidebar
+            	<Nav onClick={this.onClick} />
+              	<Sidebar
                 sidebarVisible={this.state.visible}
                 className={this.state.container}
                 >
-                <Switch>
-                  <Route path='/' exact>
-                    <Contacts />
-                  </Route>
+                	<Switch>
+                  		<Route path='/contacts' exact>
+                    		<Contacts />
+                  		</Route>
 
-                  <Route path='/meetings' exact>
-                    <Meetings />
-                  </Route>
+                  		<Route path='/meetings' exact>
+                    		<Meetings />
+                  		</Route>
                 
-                  <Route path='/tasks' exact>
-                    <Tasks />
-                  </Route>
-                </Switch>
-              </Sidebar>
+                  		<Route path='/tasks' exact>
+                    		<Tasks />
+                  		</Route>
+
+						<Route path='/edit/contact' exact>
+							<EditContact />
+						</Route>
+
+						<Route path='/edit/meeting'>
+							<EditMeeting />
+						</Route>
+                	</Switch>
+              	</Sidebar>
             </Router>
       </div>
     );
