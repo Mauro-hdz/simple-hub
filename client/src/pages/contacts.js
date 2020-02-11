@@ -2,11 +2,39 @@ import React, { Component } from 'react';
 import { Menu, Button, Header, Input, Table } from 'semantic-ui-react';
 import ContactModal from '../components/ContactModal';
 import Contact from '../components/Contact';
+import axios from 'axios';
 
 class Contacts extends Component {
 
     state = {
         data: []
+    }
+
+
+    componentDidMount() {
+        axios.get('/api/contact/all')
+        .then(res => {
+            this.setState({
+                data: res.data.data
+            })
+            console.log(this.state.data)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+    }
+
+    componentDidUpdate() {
+        axios.get('/api/contact/all')
+        .then(res => {
+            this.setState({
+                data: res.data.data
+            })
+            console.log(this.state.data)
+        })
+        .catch(err => {
+            console.log(err)
+        });
     }
 
     render() {
@@ -41,6 +69,16 @@ class Contacts extends Component {
 
                     <Table.Body>
                         {/* Render all contacts here */}   
+                        {this.state.data.map(contact => {
+                            return (
+                                <Contact
+                                name={contact.name}
+                                title={contact.title}
+                                email={contact.email}
+                                phoneNumber={contact.phoneNumber}
+                                />
+                            )
+                        })}
                     </Table.Body>
                 </Table>
             </div>

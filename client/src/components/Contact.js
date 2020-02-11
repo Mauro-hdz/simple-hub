@@ -9,8 +9,8 @@ const Contact = (props) => {
             <Table.Cell>{props.title}</Table.Cell>
             <Table.Cell>{props.email}</Table.Cell>
             <Table.Cell>{props.phoneNumber}</Table.Cell>
-            <Table.Cell>{props.edit} </Table.Cell>
-            <Table.Cell>{props.delete}</Table.Cell>
+            <Table.Cell>Edit</Table.Cell>
+            <Table.Cell>Delete</Table.Cell>
         </Table.Row>  
     )
 }

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {Icon, Grid, Menu, Segment, Sidebar, Container} from 'semantic-ui-react';
+import React from 'react';
+import { Icon, Grid, Menu, Segment, Sidebar } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 
 
@@ -19,21 +19,21 @@ const SidebarMenu = (props) => {
           >
             <Menu.Header as='h1' className='ui blue'>SimpleSpot</Menu.Header>
             <Link to='/'>
-            <Menu.Item header={true} as='a'>
+            <Menu.Item header={true}>
               <Icon name='user' />
               Contacts
             </Menu.Item>
             </Link>
 
             <Link to='/meetings'>
-            <Menu.Item header={true} as='a'>
+            <Menu.Item header={true}>
               <Icon name='calendar' />
               Meetings
             </Menu.Item>
             </Link>
 
             <Link to='/tasks'>
-            <Menu.Item header={true} as='a'>
+            <Menu.Item header={true}>
               <Icon name='tasks' />
               Tasks
             </Menu.Item>

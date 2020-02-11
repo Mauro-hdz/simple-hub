@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
 
 const Nav =  (props) => {
-let activeItem = '';
     return (
       <div>
         <Menu color={'blue'} inverted secondary>
