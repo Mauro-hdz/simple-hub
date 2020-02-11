@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Grid, Icon, Checkbox } from 'semantic-ui-react';
 
 
-const TaskCard = () => {
+const TaskCard = (props) => {
     return (
         <Card fluid color='red' className="task-card">
             <Card.Content>
@@ -12,10 +12,10 @@ const TaskCard = () => {
                             <Checkbox label="Completed" />
                         </Grid.Column>
                         <Grid.Column>
-                            <Card.Header as="h4">Onboard new developer</Card.Header>
+                            <Card.Header as="h4"> {props.task} </Card.Header>
                         </Grid.Column>
                         <Grid.Column>
-                            <Card.Content>IT</Card.Content>
+                            <Card.Content> {props.category} </Card.Content>
                         </Grid.Column>
                         <Grid.Column>
                             <Icon name="trash alternate outline" color="red" size="large" />

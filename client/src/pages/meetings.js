@@ -14,10 +14,27 @@ class Meetings extends Component {
         axios.get('/api/meeting/all')
         .then(res => {
             console.log(res, 'Meetings')
+            this.setState({
+                meetings: res.data.data
+            })
         })
         .catch(err => {
             console.log('Error: ', err)
+        });
+    };
+
+    rerender = () => {
+        console.log('rerender')
+        axios.get('/api/meeting/all')
+        .then(res => {
+            console.log(res, 'Meetings')
+            this.setState({
+                meetings: res.data.data
+            })
         })
+        .catch(err => {
+            console.log('Error: ', err)
+        });
     };
 
     render() {
@@ -30,7 +47,7 @@ class Meetings extends Component {
                             <Header as='h1' size='huge' floated='left'>Meetings</Header>
                             </Menu.Item>
                             <Menu.Item>
-                                <MeetingModal trigger={
+                                <MeetingModal rerenderParent={this.rerender} trigger={
                                 <Button color='orange' floated='left' inverted>+ New Meeting</Button>
                                         } />
                             </Menu.Item>
@@ -40,7 +57,18 @@ class Meetings extends Component {
                 <Grid>
                     <Grid.Row>
                         {/* Render all meeting cards here */}
-                        {/* <MeetingCard /> */}
+                        {this.state.meetings.map(meeting => {
+                            console.log(meeting)
+                            return (
+                                <MeetingCard
+                                subject={meeting.subject}
+                                location={meeting.location}
+                                date={meeting.date}
+                                time={meeting.time}
+                                attending={meeting.attending}
+                                />
+                            )
+                        })}
                     </Grid.Row>
                 </Grid>
             </div>

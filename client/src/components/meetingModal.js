@@ -89,16 +89,16 @@ class MeetingModal extends Component {
             date: this.state.date,
             time: this.state.time,
             attending: this.state.people.join(', ')
-        }
-        console.log(meeting)
+        };
         axios.post('/api/meeting/add', meeting)
         .then(res => {
             console.log(res)
+            this.props.rerenderParent();
         })
         .catch(err => {
             console.log(err)
         })
-    }
+    };
 
   render() {
     const timeOptions = [{text: 'AM', value: 'AM'}, {text: 'PM', value: 'PM'}]

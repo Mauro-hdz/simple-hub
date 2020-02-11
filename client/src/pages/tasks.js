@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TaskModal from '../components/TaskModal';
 import TaskCard from '../components/TaskCard';
 import {Header, Grid, Menu, Button, List, Card } from 'semantic-ui-react';
+import axios from 'axios';
 
-const Tasks = () => {
-    return (
-        <div>
+class Tasks extends Component {
+    state = {
+        tasks: []
+    };
+
+    componentDidMount() {
+        axios.get('/api/task/all')
+        .then(res => {
+            this.setState({
+                tasks: res.data.data
+            });
+        })
+        .catch(err => console.log('GET Request Error: ', err))
+    };
+
+    render() {
+        return (
+            <div>
             <Grid>
                 <Grid.Row>
                     <Menu secondary>
@@ -42,9 +58,18 @@ const Tasks = () => {
                     </Card.Content>
                 </Card>
 	        {/* Begin rendering task cards here */}
+            {this.state.tasks.map(task => {
+                return (
+                    <TaskCard
+                    task={task.task}
+                    category={task.category}
+                    />
+                )
+            })}
             </List>
         </div>
-    )
+        )
+    }
 };
 
 export default Tasks;

@@ -5,7 +5,7 @@ import { Card } from 'semantic-ui-react';
 const MeetingCard = (props) => {
     return (
         <div>
-            <Card>
+            <Card className="meeting-card">
                 <Card.Content>
                 <Card.Header> {props.subject} </Card.Header>
                 <Card.Meta> {props.location} </Card.Meta>

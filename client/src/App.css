@@ -73,6 +73,18 @@
   border-radius: 20px !important;
 }
 
+.meeting-card {
+  margin: 10px 20px !important;
+  width: 300px !important;
+  min-height: 250px !important;
+}
+
+/* Semantic UI overide */
+
+.pusher {
+  background-color: rgb(250, 246, 246) !important;
+}
+
 /* .input-mask {
   margin-left: 8px !important;
 } */

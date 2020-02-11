@@ -9,6 +9,7 @@ const SidebarMenu = (props) => {
     return (
         <Sidebar.Pushable>
           <Sidebar
+            className='sidebar'
             as={Menu}
             animation='push'
             icon='labeled'
