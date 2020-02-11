@@ -91,7 +91,7 @@ class MeetingModal extends Component {
             attending: this.state.people.join(', ')
         }
         console.log(meeting)
-        axios.post('/api/meeting/add', JSON.stringify(meeting))
+        axios.post('/api/meeting/add', meeting)
         .then(res => {
             console.log(res)
         })

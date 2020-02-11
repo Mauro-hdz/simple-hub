@@ -41,12 +41,15 @@ def contact_api(app, session):
     @app.route('/api/contact/add', methods=['POST'])
     def add_contact():
         if request.method == 'POST':
+            print('JSON')
+            print(request.json)
+            data = request.json
             contact = {
-                'name': request.form.get('name'),
-                'title': request.form.get('title'),
-                'email': request.form.get('email'),
-                'phone_number': request.form.get('phoneNumber'),
-                'note': request.form.get('note')
+                'name': data['name'],
+                'title': data['title'],
+                'email': data['email'],
+                'phone_number': data['phoneNumber'],
+                'note': None,
             }
             new_contact = Contact(
                 contact['name'],

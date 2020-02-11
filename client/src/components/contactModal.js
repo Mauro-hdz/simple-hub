@@ -67,7 +67,7 @@ class ContactModal extends Component {
             phoneNumber: this.state.phoneNumber
         }
         console.log(JSON.stringify(contact))
-        axios.post('/api/contact/add', JSON.stringify(contact))
+        axios.post('/api/contact/add', contact)
         .then(res => {
             console.log(res)
         })

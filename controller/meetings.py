@@ -41,12 +41,13 @@ def meeting_api(app, session):
     @app.route('/api/meeting/add', methods=['POST'])
     def add_meeting():
         if request.method == 'POST':
+            data = request.json
             meeting = {
-                'subject': request.form.get('subject'),
-                'location': request.form.get('location'),
-                'date': request.form.get('date'),
-                'time': request.form.get('time'),
-                'attending': request.form.get('attending')
+                'subject': data['subject'],
+                'location': data['location'],
+                'date': data['date'],
+                'time': data['time'],
+                'attending': data['attending']
             }
             new_meeting = Meeting(
                 meeting['subject'],
