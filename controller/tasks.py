@@ -37,10 +37,11 @@ def task_api(app, session):
     @app.route('/api/task/add', methods=['POST'])
     def add_task():
         if request.method == 'POST':
+            data = request.json
             new_task = Task(
-                request.form.get('task'),
-                request.form.get('category'),
-                request.form.get('completed')
+                data['task'],
+                data['category'],
+                data['completed']
             )
             session.add(new_task)
             session.commit()
