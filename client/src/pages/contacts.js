@@ -9,6 +9,8 @@ class Contacts extends Component {
         super(props);
 
         this.rerender = this.rerender.bind(this);
+        this.editContact = this.editContact.bind(this);
+        this.deleteContact = this.deleteContact.bind(this);
 
         this.state = {
             data: []
@@ -41,6 +43,19 @@ class Contacts extends Component {
             console.log(err)
         });
     };
+
+    editContact(id) {
+        console.log(id)
+    }
+
+    deleteContact(id) {
+        console.log(id)
+        axios.delete(`/api/contact/delete/${id}`)
+        .then(res => {
+            console.log(res)
+            this.rerender();
+        })
+    }
 
 
     render() {
@@ -82,6 +97,9 @@ class Contacts extends Component {
                                 title={contact.title}
                                 email={contact.email}
                                 phoneNumber={contact.phoneNumber}
+                                clickEdit={this.editContact}
+                                clickDelete={this.deleteContact}
+                                id={contact.id}
                                 key={contact.id}
                                 />
                             )

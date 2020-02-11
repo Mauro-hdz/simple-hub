@@ -66,6 +66,7 @@ class Meetings extends Component {
                                 date={meeting.date}
                                 time={meeting.time}
                                 attending={meeting.attending}
+                                key={meeting.id}
                                 />
                             )
                         })}

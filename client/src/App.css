@@ -79,6 +79,11 @@
   min-height: 250px !important;
 }
 
+.text-center {
+  /* text-align: center !important; */
+  margin: 0 auto !important;
+}
+
 /* Semantic UI overide */
 
 .pusher {

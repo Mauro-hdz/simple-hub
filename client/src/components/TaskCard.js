@@ -4,7 +4,7 @@ import { Card, Grid, Icon, Checkbox } from 'semantic-ui-react';
 
 const TaskCard = (props) => {
     return (
-        <Card fluid color='red' className="task-card">
+        <Card raised fluid color='red' className="task-card">
             <Card.Content>
                 <Grid columns='4'>
                     <Grid.Row>

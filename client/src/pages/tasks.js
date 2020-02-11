@@ -73,6 +73,7 @@ class Tasks extends Component {
                     <TaskCard
                     task={task.task}
                     category={task.category}
+                    key={task.id}
                     />
                 )
             })}

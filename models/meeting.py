@@ -11,7 +11,7 @@ class Meeting(Base):
     location = Column(String(100))
     date = Column(String(25))
     time = Column(String(10))
-    attending = Column(String(500))
+    attending = Column(String(2000))
 
     def __init__(self, subject, location, date, time, attending):
         self.subject = subject

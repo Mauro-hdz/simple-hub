@@ -9,8 +9,12 @@ const Contact = (props) => {
             <Table.Cell>{props.title}</Table.Cell>
             <Table.Cell>{props.email}</Table.Cell>
             <Table.Cell>{props.phoneNumber}</Table.Cell>
-            <Table.Cell>Edit</Table.Cell>
-            <Table.Cell>Delete</Table.Cell>
+            <Table.Cell>
+                <Icon onClick={() => props.clickEdit(props.id)} link name="edit outline" color="blue" size="large" className="text-center" />
+            </Table.Cell>
+            <Table.Cell>
+                <Icon onClick={() => props.clickDelete(props.id)} link name="trash alternate outline" color="red" size="large" className="text-center" />
+            </Table.Cell>
             {/* Use icon for delete button and maybe an icon for edit button */}
         </Table.Row>  
     )
