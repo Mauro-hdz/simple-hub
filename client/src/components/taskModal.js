@@ -39,6 +39,7 @@ class TaskModal extends Component {
         axios.post('/api/task/add', taskObj)
         .then(res => {
             console.log(res)
+            this.props.rerenderParent();
         })
         .catch(err => {
             console.log('Error: ', err)

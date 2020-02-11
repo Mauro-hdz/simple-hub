@@ -19,6 +19,16 @@ class Tasks extends Component {
         .catch(err => console.log('GET Request Error: ', err))
     };
 
+    rerender = () => {
+        axios.get('/api/task/all')
+        .then(res => {
+            this.setState({
+                tasks: res.data.data
+            });
+        })
+        .catch(err => console.log('GET Request Error: ', err))
+    }
+
     render() {
         return (
             <div>
@@ -29,7 +39,7 @@ class Tasks extends Component {
                             <Header as='h1' size='huge' floated='left'>Tasks</Header>
                         </Menu.Item>
                         <Menu.Item>
-                            <TaskModal trigger={
+                            <TaskModal rerenderParent={this.rerender} trigger={
                                 <Button color='orange' inverted>+ New Task</Button>
                             } />
                         </Menu.Item>
