@@ -5,9 +5,14 @@ import Contact from '../components/Contact';
 import axios from 'axios';
 
 class Contacts extends Component {
+    constructor(props) {
+        super(props);
 
-    state = {
-        data: []
+        this.rerender = this.rerender.bind(this);
+
+        this.state = {
+            data: []
+        }
     }
 
 
@@ -22,9 +27,9 @@ class Contacts extends Component {
         .catch(err => {
             console.log(err)
         });
-    }
+    };
 
-    componentDidUpdate() {
+    rerender(e) {
         axios.get('/api/contact/all')
         .then(res => {
             this.setState({
@@ -35,7 +40,8 @@ class Contacts extends Component {
         .catch(err => {
             console.log(err)
         });
-    }
+    };
+
 
     render() {
         return (
@@ -45,7 +51,7 @@ class Contacts extends Component {
                         <Header as='h1' floated='left' size='huge'>Contacts</Header>
                     </Menu.Item>
                     <Menu.Item>
-                        <ContactModal trigger={
+                        <ContactModal rerenderParent={this.rerender} trigger={
                             <Button content='+ New Contact' color='orange' floated='left' inverted/>
                         } />
                     </Menu.Item>
@@ -76,6 +82,7 @@ class Contacts extends Component {
                                 title={contact.title}
                                 email={contact.email}
                                 phoneNumber={contact.phoneNumber}
+                                key={contact.id}
                                 />
                             )
                         })}

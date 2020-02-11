@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Icon } from 'semantic-ui-react';
 
 
 const Contact = (props) => {
@@ -11,6 +11,7 @@ const Contact = (props) => {
             <Table.Cell>{props.phoneNumber}</Table.Cell>
             <Table.Cell>Edit</Table.Cell>
             <Table.Cell>Delete</Table.Cell>
+            {/* Use icon for delete button and maybe an icon for edit button */}
         </Table.Row>  
     )
 }

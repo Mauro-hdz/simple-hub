@@ -29,7 +29,6 @@ class ContactModal extends Component {
             firstName: e.target.value,
             name: e.target.value + ' ' + this.state.lastName
         })
-        console.log(this.state.name)
     };
 
     onChangeLastName(e) {
@@ -37,14 +36,12 @@ class ContactModal extends Component {
             lastName: e.target.value,
             name: this.state.firstName + ' ' + e.target.value
         })
-        console.log(this.state.name)
     };
 
     onChangeTitle(e) {
         this.setState({
             title: e.target.value
         })
-        console.log(this.state.title)
     };
 
     onChangePhoneNumber(e) {
@@ -65,16 +62,20 @@ class ContactModal extends Component {
             title: this.state.title,
             email: this.state.email,
             phoneNumber: this.state.phoneNumber
-        }
-        console.log(JSON.stringify(contact))
+        };
         axios.post('/api/contact/add', contact)
         .then(res => {
+            this.setState({
+                
+            })
             console.log(res)
+            this.props.rerenderParent();
+
         })
         .catch(err => {
             console.log('Error: ', err)
         })
-    }
+    };
 
     render() {
         return (
