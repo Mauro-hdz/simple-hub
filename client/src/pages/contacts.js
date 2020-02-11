@@ -46,16 +46,18 @@ class Contacts extends Component {
 
     editContact(id) {
         console.log(id)
-    }
+    };
 
     deleteContact(id) {
         console.log(id)
+        
         axios.delete(`/api/contact/delete/${id}`)
         .then(res => {
             console.log(res)
             this.rerender();
         })
-    }
+        .catch(err => console.log('Contact Delete Error: ' + err));
+    };
 
 
     render() {

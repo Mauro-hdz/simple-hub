@@ -27,7 +27,18 @@ class Tasks extends Component {
             });
         })
         .catch(err => console.log('GET Request Error: ', err))
-    }
+    };
+
+    deleteTask = (id) => {
+        console.log(id)
+        
+        axios.delete(`/api/task/delete/${id}`)
+        .then(res => {
+            console.log(res)
+            this.rerender();
+        })
+        .catch(err => console.log('Task Delete Error: ' + err))
+    };
 
     render() {
         return (
@@ -73,6 +84,8 @@ class Tasks extends Component {
                     <TaskCard
                     task={task.task}
                     category={task.category}
+                    id={task.id}
+                    clickDelete={this.deleteTask}
                     key={task.id}
                     />
                 )

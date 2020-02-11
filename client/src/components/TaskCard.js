@@ -18,7 +18,7 @@ const TaskCard = (props) => {
                             <Card.Content> {props.category} </Card.Content>
                         </Grid.Column>
                         <Grid.Column>
-                            <Icon name="trash alternate outline" color="red" size="large" />
+                            <Icon onClick={() => props.clickDelete(props.id)} link name="trash alternate outline" color="red" size="large" />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
