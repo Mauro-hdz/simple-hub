@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Form, Button, List } from 'semantic-ui-react';
+import { Card, Form, Button, List, Grid } from 'semantic-ui-react';
 import InputMask from 'react-input-mask';
 import axios from 'axios';
 
@@ -105,10 +105,18 @@ class EditMeeting extends Component {
         };
         axios.put('/api/meeting/update/' + this.state.id, updateMeeting)
         .then(res => {
-            console.log(res)
+            this.props.history.push('/meetings')
         })
         .catch(err => console.log('Update Meeting Failed: ' + err))
     };
+
+    onClickDelete = (e) => {
+        axios.delete('/api/meeting/delete/' + this.state.id)
+        .then(res => {
+            this.props.history.push('/meetings')
+        })
+        .catch(err => console.log('Failed to Delete: ' + err))
+    }
 
     render() {
         const timeOptions = [{text: 'AM', value: 'AM'}, {text: 'PM', value: 'PM'}]
@@ -159,7 +167,17 @@ class EditMeeting extends Component {
               </Form>
                     </Card.Content>
                     <Card.Content>
-                        <Button color="blue" onClick={this.onClickUpdate}>Update Meeting</Button>
+                        <Grid>
+                            <Grid.Row divided columns={2}>
+                                <Grid.Column>
+                                    <Button color="blue" size="big" onClick={this.onClickUpdate}>Update Meeting</Button>
+                                </Grid.Column>
+                                <Grid.Column>
+                                    <Button color="red" size="big" onClick={this.onClickDelete}>Delete Meeting</Button>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+
                     </Card.Content>
                 </Card>                
             </div>

@@ -96,6 +96,10 @@
   background-color: rgb(250, 246, 246) !important;
 }
 
+.pushable {
+  min-height: 100% !important;
+}
+
 .list-item {
   width: 20% !important;
 }

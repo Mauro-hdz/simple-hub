@@ -74,6 +74,7 @@ class EditContact extends Component {
         axios.put('/api/contact/update/' + this.state.id, updatedContact)
         .then(res => {
             console.log(res)
+            this.props.history.push('/contacts')
         })
         .catch(err => console.log('Contact failed to update: ' + err));
     };
