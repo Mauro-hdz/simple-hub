@@ -9,6 +9,7 @@ class EditMeeting extends Component {
         super(props);
 
         this.state = {
+            id: '',
             subject: '',
             location: '',
             date: '',
@@ -27,21 +28,21 @@ class EditMeeting extends Component {
             console.log(res)
             const time = res.data.time.split(" ");
             const people = res.data.attending.split(', ');
-            console.log(time)
             this.setState({
+                id: res.data.id,
                 subject: res.data.subject,
-            location: res.data.location,
-            date: res.data.date,
-            time: time[0] + ' ' + time[1],
-            hour: time[0],
-            AmPm: time[1],
-            person: '',
-            people: people
-            })
+                location: res.data.location,
+                date: res.data.date,
+                time: time[0] + ' ' + time[1],
+                hour: time[0],
+                AmPm: time[1],
+                person: '',
+                people: people
+            });
         })
     };
 
-    onClickAddPerson = (event) => {
+    onClickAddPerson = (e) => {
         this.setState({
             people: [...this.state.people, this.state.person],
             person: ''
@@ -58,7 +59,6 @@ class EditMeeting extends Component {
         this.setState({
             people: this.state.people
         })
-        
     };
 
     onChangeSubject = (e) => {
@@ -102,8 +102,12 @@ class EditMeeting extends Component {
             date: this.state.date,
             time: this.state.time,
             attending: this.state.people.join(', ')
-        }
-        console.log(updateMeeting)
+        };
+        axios.put('/api/meeting/update/' + this.state.id, updateMeeting)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => console.log('Update Meeting Failed: ' + err))
     };
 
     render() {

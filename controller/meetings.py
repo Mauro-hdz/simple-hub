@@ -72,8 +72,9 @@ def meeting_api(app, session):
             update_this.location = data['location']
             update_this.date = data['date']
             update_this.time = data['time']
-            update_meeting.attending = data['attending']
+            update_this.attending = data['attending']
             session.commit()
+            print(data)
             return f'Meeting with id: {id} was updated.'
 
 
