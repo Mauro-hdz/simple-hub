@@ -95,7 +95,6 @@ class EditMeeting extends Component {
     };
 
     onClickUpdate = (e) => {
-        console.log('MEETING')
         const updateMeeting = {
             subject: this.state.subject,
             location: this.state.location,
@@ -107,7 +106,7 @@ class EditMeeting extends Component {
         .then(res => {
             this.props.history.push('/meetings')
         })
-        .catch(err => console.log('Update Meeting Failed: ' + err))
+        .catch(err => console.log('Update Meeting Failed: ' + err));
     };
 
     onClickDelete = (e) => {
@@ -115,8 +114,8 @@ class EditMeeting extends Component {
         .then(res => {
             this.props.history.push('/meetings')
         })
-        .catch(err => console.log('Failed to Delete: ' + err))
-    }
+        .catch(err => console.log('Failed to Delete: ' + err));
+    };
 
     render() {
         const timeOptions = [{text: 'AM', value: 'AM'}, {text: 'PM', value: 'PM'}]

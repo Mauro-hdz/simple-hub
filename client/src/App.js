@@ -33,7 +33,7 @@ class App extends Component {
                 className={this.state.container}
                 >
                 	<Switch>
-                  		<Route path='/contacts' exact component={Contacts} />
+                  		<Route path='/' exact component={Contacts} />
 
                   		<Route path='/meetings' exact component={Meetings} />
                 
