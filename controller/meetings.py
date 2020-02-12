@@ -66,12 +66,13 @@ def meeting_api(app, session):
     def update_meeting(id):
         if request.method == 'PUT':
             update_this = session.query(Meeting).filter(Meeting.id == id).first()
+            data = request.json
             
-            update_this.subject = request.form.get('subject')
-            update_this.location = request.form.get('location')
-            update_this.date = request.form.get('date')
-            update_this.time = request.form.get('time')
-            update_meeting.attending = request.form.get('attending')
+            update_this.subject = data['subject']
+            update_this.location = data['location']
+            update_this.date = data['date']
+            update_this.time = data['time']
+            update_meeting.attending = data['attending']
             session.commit()
             return f'Meeting with id: {id} was updated.'
 

@@ -147,9 +147,6 @@ class MeetingModal extends Component {
                 })}
               </List>
               <Modal.Actions>
-                  {/* <Button color='red'>
-                      <Icon name='remove' /> Cancel
-                  </Button> */}
                   <Button onClick={this.onClickSubmit} color='green'>
                       <Icon name='checkmark' /> Submit
                   </Button>

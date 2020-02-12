@@ -85,6 +85,7 @@
 }
 
 .edit-card {
+  margin-top: 10% !important;
   min-width: 100% !important;
   min-height: 100% !important;
 }
@@ -93,6 +94,10 @@
 
 .pusher {
   background-color: rgb(250, 246, 246) !important;
+}
+
+.list-item {
+  width: 20% !important;
 }
 
 /* .input-mask {
