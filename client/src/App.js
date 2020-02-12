@@ -33,25 +33,15 @@ class App extends Component {
                 className={this.state.container}
                 >
                 	<Switch>
-                  		<Route path='/contacts' exact>
-                    		<Contacts />
-                  		</Route>
+                  		<Route path='/contacts' exact component={Contacts} />
 
-                  		<Route path='/meetings' exact>
-                    		<Meetings />
-                  		</Route>
+                  		<Route path='/meetings' exact component={Meetings} />
                 
-                  		<Route path='/tasks' exact>
-                    		<Tasks />
-                  		</Route>
+                  		<Route path='/tasks' exact component={Tasks} />
 
-						<Route path='/edit/contact' exact>
-							<EditContact />
-						</Route>
+						<Route path='/edit/contact/:id' exact component={EditContact} />
 
-						<Route path='/edit/meeting'>
-							<EditMeeting />
-						</Route>
+						<Route path='/edit/meeting/:id' exact component={EditMeeting} />
                 	</Switch>
               	</Sidebar>
             </Router>

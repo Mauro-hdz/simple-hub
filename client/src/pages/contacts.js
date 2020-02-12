@@ -9,7 +9,6 @@ class Contacts extends Component {
         super(props);
 
         this.rerender = this.rerender.bind(this);
-        this.editContact = this.editContact.bind(this);
         this.deleteContact = this.deleteContact.bind(this);
 
         this.state = {
@@ -42,10 +41,6 @@ class Contacts extends Component {
         .catch(err => {
             console.log(err)
         });
-    };
-
-    editContact(id) {
-        console.log(id)
     };
 
     deleteContact(id) {
@@ -99,7 +94,6 @@ class Contacts extends Component {
                                 title={contact.title}
                                 email={contact.email}
                                 phoneNumber={contact.phoneNumber}
-                                clickEdit={this.editContact}
                                 clickDelete={this.deleteContact}
                                 id={contact.id}
                                 key={contact.id}

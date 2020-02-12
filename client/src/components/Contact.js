@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom'
 
 
 const Contact = (props) => {
@@ -10,7 +11,9 @@ const Contact = (props) => {
             <Table.Cell>{props.email}</Table.Cell>
             <Table.Cell>{props.phoneNumber}</Table.Cell>
             <Table.Cell>
-                <Icon onClick={() => props.clickEdit(props.id)} link name="edit outline" color="blue" size="large" className="text-center" />
+                <Link to={'/edit/contact/' + props.id}>
+                    <Icon link name="edit outline" color="blue" size="large" className="text-center" />
+                </Link>
             </Table.Cell>
             <Table.Cell>
                 <Icon onClick={() => props.clickDelete(props.id)} link name="trash alternate outline" color="red" size="large" className="text-center" />

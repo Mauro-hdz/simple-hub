@@ -84,6 +84,11 @@
   margin: 0 auto !important;
 }
 
+.edit-card {
+  min-width: 100% !important;
+  min-height: 100% !important;
+}
+
 /* Semantic UI overide */
 
 .pusher {

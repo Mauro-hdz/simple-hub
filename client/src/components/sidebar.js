@@ -8,7 +8,7 @@ const SidebarMenu = (props) => {
     
     return (
         <Sidebar.Pushable>
-          <Sidebar
+        	<Sidebar
             className='sidebar'
             as={Menu}
             animation='push'
@@ -17,39 +17,35 @@ const SidebarMenu = (props) => {
             vertical
             visible={props.sidebarVisible}
             width='wide'
-          >
-            <Menu.Header as='h1' className='ui blue'>SimpleSpot</Menu.Header>
-            <Link to='/contacts'>
-            <Menu.Item header={true}>
-              <Icon name='user' />
-              Contacts
-            </Menu.Item>
-            </Link>
+          	>
+            	<Menu.Header as='h1' className='ui blue'>SimpleSpot</Menu.Header>
+            	<Link to='/contacts'>
+            		<Menu.Item header={true}>
+              			<Icon name='user' />
+              			Contacts
+            		</Menu.Item>
+            	</Link>
 
-            <Link to='/meetings'>
-            <Menu.Item header={true}>
-              <Icon name='calendar' />
-              Meetings
-            </Menu.Item>
-            </Link>
+            	<Link to='/meetings'>
+            		<Menu.Item header={true}>
+              			<Icon name='calendar' />
+              			Meetings
+            		</Menu.Item>
+            	</Link>
 
-            <Link to='/tasks'>
-            <Menu.Item header={true}>
-              <Icon name='tasks' />
-              Tasks
-            </Menu.Item>
-            </Link>
-          </Sidebar>
+            	<Link to='/tasks'>
+            		<Menu.Item header={true}>
+              			<Icon name='tasks' />
+              			Tasks
+            		</Menu.Item>
+            	</Link>
+          	</Sidebar>
     
-          <Sidebar.Pusher>
-            <Segment basic>
-            <Grid.Row className={props.className}>
-                {/* <Grid.Column  width={4}> */}
-                    {props.children}
-            {/* </Grid.Column> */}
-            </Grid.Row>
-            </Segment>
-          </Sidebar.Pusher>
+          	<Sidebar.Pusher>
+            	<Segment basic>
+            		<Grid.Row className={props.className}>{props.children}</Grid.Row>
+            	</Segment>
+          	</Sidebar.Pusher>
         </Sidebar.Pushable>
       )
 
