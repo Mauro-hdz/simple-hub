@@ -1,17 +1,42 @@
-from flask import Flask, jsonify
-from DB.connection import engine     
+from flask import Flask, jsonify, send_from_directory
+from DB.connection import engine, production_engine    
 from controller import meetings, contacts, tasks   #importing our routes
 from sqlalchemy.orm import sessionmaker
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='client/build')
 
-connection = engine.connect()
+# Production code for rendering React index.html
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
+
+
+ENV = 'prod'
+
+if ENV == 'dev':
+    app.debug = True
+    connection = engine.connect()
+    if connection:
+        print('Database is successfully connected!')
+        print(engine)
+else:
+    app.debug = False
+    prod_connection = production_engine.connect()
+    if prod_connection:
+        print('Production Database is connected!')
+        print(production_engine)
+
+
+
+
 
 Session = sessionmaker(bind=engine)
 session = Session()
-
-if connection:
-    print('Database is successfully connected!')
 
     
 meetings.meeting_api(app, session)  #initializing routes
@@ -19,5 +44,4 @@ contacts.contact_api(app, session)
 tasks.task_api(app, session)
 
 if __name__ == '__main__':
-    app.debug = True
     app.run()
