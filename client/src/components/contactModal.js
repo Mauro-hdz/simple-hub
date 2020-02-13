@@ -66,8 +66,13 @@ class ContactModal extends Component {
         axios.post('/api/contact/add', contact)
         .then(res => {
             this.setState({
-                
-            })
+                firstName: '',
+                lastName: '',
+                name: '',
+                title: '',
+                phoneNumber: '',
+                email: ''
+            });
             console.log(res)
             this.props.rerenderParent();
 

@@ -34,10 +34,13 @@ class TaskModal extends Component {
             task: this.state.task,
             category: this.state.category,
             completed: false
-        }
-        console.log(taskObj)
+        };
         axios.post('/api/task/add', taskObj)
         .then(res => {
+            this.setState({
+                task: '',
+                category: ''
+            });
             console.log(res)
             this.props.rerenderParent();
         })

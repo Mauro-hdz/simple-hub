@@ -92,6 +92,16 @@ class MeetingModal extends Component {
         };
         axios.post('/api/meeting/add', meeting)
         .then(res => {
+            this.setState({
+                subject: '',
+                location: '',
+                date: '',
+                time: '',
+                hour: '',
+                AmPm: '',
+                person: '',
+                people: []
+            });
             console.log(res)
             this.props.rerenderParent();
         })
