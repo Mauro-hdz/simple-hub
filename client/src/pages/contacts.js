@@ -16,7 +16,7 @@ class Contacts extends Component {
         }
     }
 
-// Random comment
+
     componentDidMount() {
         axios.get('/api/contact/all')
         .then(res => {
