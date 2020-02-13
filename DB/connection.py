@@ -13,4 +13,4 @@ database = os.environ['DATABASE']
 
 engine = create_engine('mysql+mysqlconnector://' + user + ':' + password + '@127.0.0.1:3306/simplehub_db') 
 
-production_engine = create_engine('mysql://' + prod_user + ':' + prod_pw + '@' + host + ':3306/' + database)
+production_engine = create_engine('mysql+mysqlconnector://' + prod_user + ':' + prod_pw + '@' + host + ':3306/' + database)
