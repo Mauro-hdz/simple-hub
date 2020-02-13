@@ -74,6 +74,7 @@ class ContactModal extends Component {
                 email: ''
             });
             console.log(res)
+            console.log('post made')
             this.props.rerenderParent();
 
         })
