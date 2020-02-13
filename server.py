@@ -44,4 +44,4 @@ contacts.contact_api(app, session)
 tasks.task_api(app, session)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(use_reloader=True, threaded=True)
