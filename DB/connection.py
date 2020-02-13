@@ -6,6 +6,8 @@ load_dotenv()
 
 password = os.environ['MYSQL_PW']
 user = os.environ['USER_NAME']
+
+
 prod_user = os.environ['PROD_USER']
 prod_pw = os.environ['PROD_PW']
 host = os.environ['HOST']
