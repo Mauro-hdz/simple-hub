@@ -16,13 +16,13 @@ def serve(path):
         return send_from_directory(app.static_folder, 'index.html')
 
 
-ENV = 'prod'
+ENV = 'dev'
 
 if ENV == 'dev':
     app.debug = True
     connection = engine.connect()
     if connection:
-        print('Database is successfully connected!')
+        print('Development Database is successfully connected!')
         print(engine)
 else:
     app.debug = False

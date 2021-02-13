@@ -8,6 +8,7 @@ import Meetings from './pages/meetings';
 import Tasks from './pages/tasks';
 import EditMeeting from './pages/editMeeting';
 import EditContact from './pages/editContact';
+import LoginPage from "./pages/LoginPage";
 
 class App extends Component {
 
@@ -25,25 +26,26 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       
             <Router>
-            	<Nav onClick={this.onClick} />
-              	<Sidebar
-                sidebarVisible={this.state.visible}
-                className={this.state.container}
-                >
-                	<Switch>
-                  		<Route path='/' exact component={Contacts} />
+              <Switch>
+                <Route path='/' exact component={LoginPage}/> 
 
-                  		<Route path='/meetings' exact component={Meetings} />
+            	  <Nav onClick={this.onClick} />
+              	  <Sidebar
+                  sidebarVisible={this.state.visible}
+                  className={this.state.container}
+                  >
+                    <Route path='/contacts' exact component={Contacts} />
+
+                  	<Route path='/meetings' exact component={Meetings} />
                 
-                  		<Route path='/tasks' exact component={Tasks} />
+                  	<Route path='/tasks' exact component={Tasks} />
 
-						<Route path='/edit/contact/:id' exact component={EditContact} />
+						        <Route path='/edit/contact/:id' exact component={EditContact} />
 
-						<Route path='/edit/meeting/:id' exact component={EditMeeting} />
-                	</Switch>
-              	</Sidebar>
+						        <Route path='/edit/meeting/:id' exact component={EditMeeting} />
+              	  </Sidebar>
+                </Switch>
             </Router>
       </div>
     );
