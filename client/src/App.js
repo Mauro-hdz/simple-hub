@@ -25,30 +25,34 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-            <Router>
-              <Switch>
-                <Route path='/' exact component={LoginPage}/> 
+		<div className='App'>
+			<Router>
+				<Switch>
+					<Route path='/' exact component={LoginPage} />
 
-            	  <Nav onClick={this.onClick} />
-              	  <Sidebar
-                  sidebarVisible={this.state.visible}
-                  className={this.state.container}
-                  >
-                    <Route path='/contacts' exact component={Contacts} />
-
-                  	<Route path='/meetings' exact component={Meetings} />
-                
-                  	<Route path='/tasks' exact component={Tasks} />
-
-						        <Route path='/edit/contact/:id' exact component={EditContact} />
-
-						        <Route path='/edit/meeting/:id' exact component={EditMeeting} />
-              	  </Sidebar>
-                </Switch>
-            </Router>
-      </div>
-    );
+					<Nav onClick={this.onClick} />
+					<Sidebar
+						sidebarVisible={this.state.visible}
+						className={this.state.container}
+					>
+						<Route path='/contacts' exact component={Contacts} />
+						<Route path='/meetings' exact component={Meetings} />
+						<Route path='/tasks' exact component={Tasks} />
+						<Route
+							path='/edit/contact/:id'
+							exact
+							component={EditContact}
+						/>
+						<Route
+							path='/edit/meeting/:id'
+							exact
+							component={EditMeeting}
+						/>
+					</Sidebar>
+				</Switch>
+			</Router>
+		</div>
+	);
   }
   
 }
