@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	Form,
 	FormInput,
@@ -10,6 +10,17 @@ import {
 } from 'semantic-ui-react';
 
 function LoginPage() {
+	const [userEmail, setUserEmail] = useState("");
+	const [userPassword, setUserPassword] = useState("");
+
+function onLogInSubmit() {
+console.log("user: ", userEmail);
+console.log("user pw: ", userPassword);
+//Here we send a call to our server
+//If the server authenticates the user as a valid user allow the user to view our other pages
+//Otherwise return a false, user is not valid, please create an account
+}
+
     return (
 		<div>
 			<Container
@@ -19,15 +30,17 @@ function LoginPage() {
 					minHeight: '100vh',
 				}}
 			>
-				<Grid width={12}>
+				<Grid centered>
 					<GridRow>
-						<GridColumn width={8}></GridColumn>
-						<GridColumn width={4}>
-							<Form style={{ width: '50%' }}>
-								<FormInput />
-								<FormInput />
-								<Button primary>Log In</Button>
-							</Form>
+						<GridColumn width={5}>
+							<div>
+								<h3 style={{color: "blue"}}>Please Log In</h3>
+								<Form onSubmit={onLogInSubmit}>
+									<FormInput value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
+									<FormInput value={userPassword} onChange={(e) => setUserPassword(e.target.value)} />
+									<Button primary>Log In</Button>
+								</Form>
+							</div>
 						</GridColumn>
 					</GridRow>
 				</Grid>

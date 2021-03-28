@@ -1,5 +1,5 @@
-import React, { Component, useReducer } from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Sidebar from './components/Sidebar';
 import Nav from './components/Navbar';
@@ -8,7 +8,7 @@ import Meetings from './pages/meetings';
 import Tasks from './pages/tasks';
 import EditMeeting from './pages/editMeeting';
 import EditContact from './pages/editContact';
-import LoginPage from "./pages/LoginPage";
+import LoginPage from './pages/LoginPage';
 
 class App extends Component {
 	state = {
