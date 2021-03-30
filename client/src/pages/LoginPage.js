@@ -22,40 +22,39 @@ function LoginPage() {
 	}
 
 	return (
-		<div
+		<Container
 			style={{
+				paddingTop: '10%',
 				backgroundColor: 'lightgrey',
 				width: '100vw',
 				height: '100vh',
 			}}
 		>
-			<Container>
-				<Grid centered>
-					<GridRow>
-						<GridColumn width={4}>
-							<div>
-								<h3 style={{ color: 'blue' }}>Please Log In</h3>
-								<Form onSubmit={onLogInSubmit}>
-									<FormInput
-										value={userEmail}
-										onChange={(e) =>
-											setUserEmail(e.target.value)
-										}
-									/>
-									<FormInput
-										value={userPassword}
-										onChange={(e) =>
-											setUserPassword(e.target.value)
-										}
-									/>
-									<Button primary>Log In</Button>
-								</Form>
-							</div>
-						</GridColumn>
-					</GridRow>
-				</Grid>
-			</Container>
-		</div>
+			<Grid centered>
+				<GridRow>
+					<GridColumn width={4}>
+						<div>
+							<h3 style={{ color: 'blue' }}>Please Log In</h3>
+							<Form onSubmit={onLogInSubmit}>
+								<FormInput
+									value={userEmail}
+									onChange={(e) =>
+										setUserEmail(e.target.value)
+									}
+								/>
+								<FormInput
+									value={userPassword}
+									onChange={(e) =>
+										setUserPassword(e.target.value)
+									}
+								/>
+								<Button primary>Log In</Button>
+							</Form>
+						</div>
+					</GridColumn>
+				</GridRow>
+			</Grid>
+		</Container>
 	);
 }
 
