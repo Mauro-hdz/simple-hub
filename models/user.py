@@ -6,9 +6,11 @@ Base = declarative_base()
 class User(Base) :
     __tablename__ = "users"
 
+    id = Column(Integer, primary_key=True)
     email = Column(String(30))
-    password = Column(String(50))
+    passcode = Column(String(50))
 
-    def __init__(self, email, password):
+    def __init__(self, id, email, passcode):
+        self.id = id
         self.email = email
-        self.password = password
+        self.passcode = passcode

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
 	Form,
 	FormInput,
@@ -11,14 +12,20 @@ import {
 
 function LoginPage() {
 	const [userEmail, setUserEmail] = useState('');
-	const [userPassword, setUserPassword] = useState('');
+	const [userPasscode, setUserPasscode] = useState('');
 
 	function onLogInSubmit() {
 		console.log('user: ', userEmail);
-		console.log('user pw: ', userPassword);
+		console.log('user pw: ', userPasscode);
 		//Here we send a call to our server
 		//If the server authenticates the user as a valid user allow the user to view our other pages
 		//Otherwise return a false, user is not valid, please create an account
+		axios
+			.post('/api/user/login', { userEmail, userPasscode })
+			.then((res) => {
+				console.log('response', res);
+			})
+			.catch((err) => console.log(err));
 	}
 
 	return (
@@ -43,9 +50,9 @@ function LoginPage() {
 									}
 								/>
 								<FormInput
-									value={userPassword}
+									value={userPasscode}
 									onChange={(e) =>
-										setUserPassword(e.target.value)
+										setUserPasscode(e.target.value)
 									}
 								/>
 								<Button primary>Log In</Button>

@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, send_from_directory
 from DB.connection import engine, production_engine    
-from controller import meetings, contacts, tasks   #importing our routes
+from controller import meetings, contacts, tasks, users   #importing our routes
 from sqlalchemy.orm import sessionmaker
 import os
 
@@ -35,13 +35,20 @@ else:
 
 
 
-Session = sessionmaker(bind=production_engine)
-session = Session()
+Prod_Session = sessionmaker(bind=production_engine)
+Dev_Session = sessionmaker(bind=engine)
+
+session = Prod_Session()
+
+if ENV == 'dev':
+    print("DEV SESSION")
+    session = Dev_Session()
 
     
 meetings.meeting_api(app, session)  #initializing routes
 contacts.contact_api(app, session)
 tasks.task_api(app, session)
+users.users_api(app, session)
 
 if __name__ == '__main__':
     app.run(use_reloader=True, threaded=True)
