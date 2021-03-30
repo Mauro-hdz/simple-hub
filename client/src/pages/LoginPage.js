@@ -23,17 +23,16 @@ console.log("user pw: ", userPassword);
 }
 
     return (
-		<div>
 			<Container
 				style={{
-					backgroundColor: 'grey',
-					minWidth: '100vw',
-					minHeight: '100vh',
+					backgroundColor: 'lightgrey',
+					width: '100vw',
+					height: '100vh',
 				}}
 			>
 				<Grid centered>
 					<GridRow>
-						<GridColumn width={5}>
+						<GridColumn width={4}>
 							<div>
 								<h3 style={{color: "blue"}}>Please Log In</h3>
 								<Form onSubmit={onLogInSubmit}>
@@ -46,7 +45,6 @@ console.log("user pw: ", userPassword);
 					</GridRow>
 				</Grid>
 			</Container>
-		</div>
 	);
 }
 
