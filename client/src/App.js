@@ -20,7 +20,7 @@ class App extends Component {
 		container: 'no-left-margin',
 	};
 
-	onClick = () => {
+	onClickNav = () => {
 		if (this.state.visible === true) {
 			this.setState({ visible: false, container: 'ui container' });
 		} else {
@@ -35,7 +35,7 @@ class App extends Component {
 					<Switch>
 						{this.state.user.loggedIn ? (
 							<>
-								<Nav onClick={this.onClick} />
+								<Nav onClick={this.onClickNav} />
 								<Sidebar
 									sidebarVisible={this.state.visible}
 									className={this.state.container}
