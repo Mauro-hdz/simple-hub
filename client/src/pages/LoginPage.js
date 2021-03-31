@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 import {
 	Form,
@@ -57,6 +59,17 @@ function LoginPage() {
 								/>
 								<Button primary>Log In</Button>
 							</Form>
+						</div>
+						<div style={{ marginTop: '3em' }}>
+							<h4>
+								Don't have an account yet?
+								<span>
+									<Link to='/create-account'>
+										{' '}
+										Create account.
+									</Link>
+								</span>
+							</h4>
 						</div>
 					</GridColumn>
 				</GridRow>

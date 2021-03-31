@@ -10,6 +10,7 @@ import Tasks from './pages/tasks';
 import EditMeeting from './pages/editMeeting';
 import EditContact from './pages/editContact';
 import LoginPage from './pages/LoginPage';
+import CreateAccount from './pages/CreateAccount';
 
 class App extends Component {
 	state = {
@@ -68,7 +69,14 @@ class App extends Component {
 								</Sidebar>
 							</>
 						) : (
-							<Route path='/' exact component={LoginPage} />
+							<>
+								<Route path='/' exact component={LoginPage} />
+								<Route
+									path='/create-account'
+									exact
+									component={CreateAccount}
+								/>
+							</>
 						)}
 					</Switch>
 				</Router>
