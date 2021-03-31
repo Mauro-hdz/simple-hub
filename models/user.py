@@ -10,7 +10,7 @@ class User(Base) :
     email = Column(String(30))
     passcode = Column(String(50))
 
-    def __init__(self, id, email, passcode):
+    def __init__(self, email, passcode):
         self.id = id
         self.email = email
         self.passcode = passcode
