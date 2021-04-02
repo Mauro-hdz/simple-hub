@@ -11,6 +11,5 @@ class User(Base) :
     passcode = Column(String(50))
 
     def __init__(self, email, passcode):
-        self.id = id
         self.email = email
         self.passcode = passcode
