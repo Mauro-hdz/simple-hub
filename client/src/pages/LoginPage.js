@@ -1,33 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
-import {
-	Form,
-	FormInput,
-	Button,
-	Container,
-	GridColumn,
-	GridRow,
-	Grid,
-} from 'semantic-ui-react';
+import { Form, FormInput, Button, Container, GridColumn, GridRow, Grid } from 'semantic-ui-react';
 
 function LoginPage() {
+	const history = useHistory();
+
 	const [userEmail, setUserEmail] = useState('');
 	const [userPasscode, setUserPasscode] = useState('');
 
-	function onLogInSubmit() {
-		console.log('user: ', userEmail);
-		console.log('user pw: ', userPasscode);
-		//Here we send a call to our server
-		//If the server authenticates the user as a valid user allow the user to view our other pages
-		//Otherwise return a false, user is not valid, please create an account
-		axios
-			.post('/api/user/login', { userEmail, userPasscode })
-			.then((res) => {
-				console.log('response', res);
-			})
-			.catch((err) => console.log(err));
+	async function onLogInSubmit() {
+		const response = await axios.post('/api/user/login', {
+			userEmail,
+			userPasscode,
+		});
+
+		if (response) history.push('/contacts');
 	}
 
 	return (
@@ -47,15 +36,11 @@ function LoginPage() {
 							<Form onSubmit={onLogInSubmit}>
 								<FormInput
 									value={userEmail}
-									onChange={(e) =>
-										setUserEmail(e.target.value)
-									}
+									onChange={(e) => setUserEmail(e.target.value)}
 								/>
 								<FormInput
 									value={userPasscode}
-									onChange={(e) =>
-										setUserPasscode(e.target.value)
-									}
+									onChange={(e) => setUserPasscode(e.target.value)}
 								/>
 								<Button primary>Log In</Button>
 							</Form>
@@ -64,10 +49,7 @@ function LoginPage() {
 							<h4>
 								Don't have an account yet?
 								<span>
-									<Link to='/create-account'>
-										{' '}
-										Create account.
-									</Link>
+									<Link to='/create-account'> Create account.</Link>
 								</span>
 							</h4>
 						</div>
