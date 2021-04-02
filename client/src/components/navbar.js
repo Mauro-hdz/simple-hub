@@ -1,26 +1,28 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Menu, Icon } from 'semantic-ui-react';
 
-const Nav =  (props) => {
-    return (
-      <div>
-        <Menu color={'blue'} inverted secondary>
-          <Menu.Item
-            position={'left'}
-            onClick={() => props.onClick()}
-          >
-            <Icon name='bars' /> 
-          </Menu.Item>
-         
-          <Menu.Menu position='right'>
-            <Menu.Item
-              name='logout'
-            //   onClick={this.handleItemClick}
-            />
-          </Menu.Menu>
-        </Menu>
-      </div>
-    )
-}
+const Nav = (props) => {
+	const history = useHistory();
+
+	function handleLogoutClick() {
+		props.updateUserStatus({ loggedIn: false });
+		history.push('/');
+	}
+
+	return (
+		<div>
+			<Menu color={'blue'} inverted secondary>
+				<Menu.Item position={'left'} onClick={() => props.onClick()}>
+					<Icon name='bars' />
+				</Menu.Item>
+
+				<Menu.Menu position='right'>
+					<Menu.Item name='logout' onClick={handleLogoutClick} />
+				</Menu.Menu>
+			</Menu>
+		</div>
+	);
+};
 
 export default Nav;

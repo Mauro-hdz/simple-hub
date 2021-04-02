@@ -31,6 +31,10 @@ class App extends Component {
 		}
 	};
 
+	updateUserStatus = (userStatus) => {
+		this.setState({ user: userStatus });
+	};
+
 	render() {
 		return (
 			<div className='App'>
@@ -38,7 +42,10 @@ class App extends Component {
 					<Switch>
 						{this.state.user.loggedIn ? (
 							<>
-								<Nav onClick={this.onClickNav} />
+								<Nav
+									onClick={this.onClickNav}
+									updateUserStatus={this.updateUserStatus}
+								/>
 								<Sidebar
 									sidebarVisible={this.state.visible}
 									className={this.state.container}
@@ -52,7 +59,13 @@ class App extends Component {
 							</>
 						) : (
 							<>
-								<Route path='/' exact component={LoginPage} />
+								<Route
+									path='/'
+									exact
+									component={() => (
+										<LoginPage updateUserStatus={this.updateUserStatus} />
+									)}
+								/>
 								<Route path='/create-account' exact component={CreateAccount} />
 							</>
 						)}

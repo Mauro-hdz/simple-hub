@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Form, FormInput, Button, Container, GridColumn, GridRow, Grid } from 'semantic-ui-react';
 
-function LoginPage() {
+function LoginPage(props) {
 	const history = useHistory();
 
 	const [userEmail, setUserEmail] = useState('');
@@ -16,7 +16,10 @@ function LoginPage() {
 			userPasscode,
 		});
 
-		if (response) history.push('/contacts');
+		if (response.data.loginSuccess) {
+			props.updateUserStatus({ loggedIn: true });
+			history.push('/contacts');
+		}
 	}
 
 	return (
