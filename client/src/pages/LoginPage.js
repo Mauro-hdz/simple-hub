@@ -23,46 +23,39 @@ function LoginPage(props) {
 	}
 
 	return (
-		<Container
-			style={{
-				// paddingTop: '5%',
-				backgroundColor: 'lightgrey',
-				width: '100vw',
-				height: '100vh',
-			}}
-		>
-			<Grid>
-				<GridRow style={{ height: '100vh' }}>
-					<GridColumn width={10}>
-						<div style={{ backgroundColor: 'lightblue', height: '100%' }}></div>
-					</GridColumn>
-					<GridColumn width={5}>
-						<div>
-							<h3 style={{ color: 'blue' }}>Please Log In</h3>
-							<Form onSubmit={onLogInSubmit}>
-								<FormInput
-									value={userEmail}
-									onChange={(e) => setUserEmail(e.target.value)}
-								/>
-								<FormInput
-									value={userPasscode}
-									onChange={(e) => setUserPasscode(e.target.value)}
-								/>
-								<Button primary>Log In</Button>
-							</Form>
-						</div>
-						<div style={{ marginTop: '3em' }}>
-							<h4>
-								Don't have an account yet?
-								<span>
-									<Link to='/create-account'> Create account.</Link>
-								</span>
-							</h4>
-						</div>
-					</GridColumn>
-				</GridRow>
-			</Grid>
-		</Container>
+		<div className='clearfix'>
+			<div className='col xs-col-8'>
+				<div style={{ height: '100vh', backgroundColor: 'skyblue' }}>
+					<h3>KonnectCRM</h3>
+				</div>
+			</div>
+			<div className='col xs-col-4'>
+				<div className='xs-p6'>
+					<h3 style={{ color: 'darkcyan' }}>Please Log In</h3>
+					<Form className='xs-pt6' onSubmit={onLogInSubmit}>
+						<FormInput
+							placeholder='Email'
+							value={userEmail}
+							onChange={(e) => setUserEmail(e.target.value)}
+						/>
+						<FormInput
+							placeholder='Password'
+							value={userPasscode}
+							onChange={(e) => setUserPasscode(e.target.value)}
+						/>
+						<Button primary>Log In</Button>
+					</Form>
+				</div>
+				<div style={{ marginTop: '3em' }}>
+					<h4>
+						Don't have an account yet?
+						<span>
+							<Link to='/create-account'> Create account.</Link>
+						</span>
+					</h4>
+				</div>
+			</div>
+		</div>
 	);
 }
 
