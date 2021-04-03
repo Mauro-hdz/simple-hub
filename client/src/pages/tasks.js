@@ -7,6 +7,7 @@ import axios from 'axios';
 class Tasks extends Component {
 	state = {
 		tasks: [],
+		showTaskModal: false,
 	};
 
 	componentDidMount() {
@@ -46,8 +47,8 @@ class Tasks extends Component {
 	render() {
 		return (
 			<div>
-				<Grid>
-					<Grid.Row>
+				<div bp='grid'>
+					<div bp='12'>
 						<Menu secondary>
 							<Menu.Item>
 								<Header as='h1' size='huge' floated='left'>
@@ -65,8 +66,8 @@ class Tasks extends Component {
 								/>
 							</Menu.Item>
 						</Menu>
-					</Grid.Row>
-				</Grid>
+					</div>
+				</div>
 				<List verticalAlign='middle' className='margin-top'>
 					<Card fluid color='blue' className='task-card'>
 						<Card.Content>

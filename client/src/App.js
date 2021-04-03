@@ -7,10 +7,10 @@ import Sidebar from './components/Sidebar';
 import Nav from './components/Navbar';
 
 import Contacts from './pages/Contacts';
-import Meetings from './pages/meetings';
-import Tasks from './pages/tasks';
-import EditMeeting from './pages/editMeeting';
-import EditContact from './pages/editContact';
+import Meetings from './pages/Meetings';
+import Tasks from './pages/Tasks';
+import EditMeeting from './pages/EditMeeting';
+import EditContact from './pages/EditContact';
 import LoginPage from './pages/LoginPage';
 import CreateAccount from './pages/CreateAccount';
 

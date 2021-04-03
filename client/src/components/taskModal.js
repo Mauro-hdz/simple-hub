@@ -1,76 +1,60 @@
-import React, { Component } from 'react';
-import { Button, Modal, Form, Icon} from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Button, Modal, Form, Icon } from 'semantic-ui-react';
 import axios from 'axios';
 
+function TaskModal(props) {
+	const [task, setTask] = useState('');
+	const [category, setCategory] = useState('');
 
-class TaskModal extends Component {
-    constructor(props) {
-        super(props);
+	function onChangeTask(e) {
+		setTask(e.target.value);
+	}
 
-        this.onChangeTask = this.onChangeTask.bind(this);
-        this.onChangeCategory = this.onChangeCategory.bind(this);
-        this.onClickSubmit = this.onClickSubmit.bind(this);
+	function onChangeCategory(e) {
+		setCategory(e.target.value);
+	}
 
-        this.state = {
-            task: '',
-            category: ''
-        }
-    }
+	async function onClickSubmit(e) {
+		const taskObj = {
+			task,
+			category,
+			completed: false,
+		};
 
-    onChangeTask(e) {
-        this.setState({
-            task: e.target.value
-        })
-    };
+		const response = await axios.post('/api/task/add', taskObj);
 
-    onChangeCategory(e) {
-        this.setState({
-            category: e.target.value
-        })
-    };
+		if (response) {
+			setTask('');
+			setCategory('');
+			props.rerenderParent();
+		}
+	}
 
-    onClickSubmit(e) {
-        const taskObj = {
-            task: this.state.task,
-            category: this.state.category,
-            completed: false
-        };
-        axios.post('/api/task/add', taskObj)
-        .then(res => {
-            this.setState({
-                task: '',
-                category: ''
-            });
-            console.log(res)
-            this.props.rerenderParent();
-        })
-        .catch(err => {
-            console.log('Error: ', err)
-        })
-    }
-
-    render() {
-        return (
-            <Modal trigger={this.props.trigger} size="tiny">
-                <Modal.Header>Add A New Task</Modal.Header>
-                <Modal.Content>
-                    <Form>
-                        <Form.Group>
-                            <Form.Input value={this.state.task} onChange={this.onChangeTask} label="Task" type="text" />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Input value={this.state.category} onChange={this.onChangeCategory} label="Category" type="text" />
-                        </Form.Group>
-                    </Form>
-                    <Modal.Actions>
-                        <Button color='green' onClick={this.onClickSubmit}>
-                            <Icon name='checkmark' /> Submit
-                        </Button>
-                    </Modal.Actions>
-                </Modal.Content>
-            </Modal>
-        )
-    }
+	return (
+		<Modal open={props.showTaskModal} size='tiny'>
+			<Modal.Header>Add A New Task</Modal.Header>
+			<Modal.Content>
+				<Form>
+					<Form.Group>
+						<Form.Input value={task} onChange={onChangeTask} label='Task' type='text' />
+					</Form.Group>
+					<Form.Group>
+						<Form.Input
+							value={category}
+							onChange={onChangeCategory}
+							label='Category'
+							type='text'
+						/>
+					</Form.Group>
+				</Form>
+				<Modal.Actions>
+					<Button color='green' onClick={onClickSubmit}>
+						<Icon name='checkmark' /> Submit
+					</Button>
+				</Modal.Actions>
+			</Modal.Content>
+		</Modal>
+	);
 }
 
 export default TaskModal;
