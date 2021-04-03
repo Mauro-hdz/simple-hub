@@ -94,6 +94,7 @@ class Tasks extends Component {
 						return (
 							<TaskCard
 								task={task.task}
+								checked={task.completed}
 								category={task.category}
 								id={task.id}
 								clickDelete={this.deleteTask}

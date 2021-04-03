@@ -52,11 +52,12 @@ def task_api(app, session):
     @app.route('/api/task/update/<id>', methods=['PUT'])
     def update_task(id):
         if request.method == 'PUT':
+            data = request.json
             update_this = session.query(Task).filter(Task.id == id).first()
             
-            update_this.task = request.form.get('task')
-            update_this.category = request.form.get('category')
-            update_this.completed = request.form.get('completed')
+            update_this.task = data['task']
+            update_this.category = data['category']
+            update_this.completed = data['completed']
             session.commit()
             print(update_this, f'Task with id: {id} was updated.')
             return f'Task with id: {id} was updated.'
