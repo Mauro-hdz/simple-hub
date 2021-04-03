@@ -28,7 +28,7 @@ function CreateAccount() {
 		if (validEmail) {
 			if (userPasscode != null) {
 				const userInput = {
-					lowerCaseEmail,
+					userEmail: lowerCaseEmail,
 					userPasscode,
 				};
 
@@ -67,6 +67,7 @@ function CreateAccount() {
 								<FormField>
 									<FormInput
 										label='Password'
+										type='password'
 										value={userPasscode}
 										onChange={(e) => setUserPasscode(e.target.value)}
 									/>
