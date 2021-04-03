@@ -1,10 +1,10 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Menu, Button, Header, Input, Table } from 'semantic-ui-react';
 import ContactModal from '../components/ContactModal';
 import Contact from '../components/Contact';
 import axios from 'axios';
 
-function Contacts(props) {
+function Contacts() {
 	const [data, setData] = useState([]);
 	const [showContactModal, setShowContactModal] = useState(false);
 
@@ -38,7 +38,11 @@ function Contacts(props) {
 
 	return (
 		<>
-			<ContactModal showContactModal={showContactModal} rerenderParent={rerender} />
+			<ContactModal
+				showContactModal={showContactModal}
+				rerenderParent={rerender}
+				onClose={() => setShowContactModal(false)}
+			/>
 			<div>
 				<Menu secondary>
 					<Menu.Item>

@@ -58,7 +58,12 @@ function ContactModal(props) {
 	}
 
 	return (
-		<Modal open={props.showContactModal} size='tiny'>
+		<Modal
+			open={props.showContactModal}
+			size='tiny'
+			closeOnDocumentClick
+			onClose={props.onClose}
+		>
 			<Modal.Header>Add A New Contact</Modal.Header>
 			<Modal.Content>
 				<Form>
