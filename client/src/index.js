@@ -4,6 +4,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import 'semantic-ui-css/semantic.min.css';
+import 'bf-solid/dist/solid.latest.css';
 import './index.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
