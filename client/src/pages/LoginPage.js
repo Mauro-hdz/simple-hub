@@ -2,24 +2,35 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
-import { Form, FormInput, Button, Container, GridColumn, GridRow, Grid } from 'semantic-ui-react';
+import { Form, FormInput, Button } from 'semantic-ui-react';
 
 function LoginPage(props) {
 	const history = useHistory();
 
 	const [userEmail, setUserEmail] = useState('');
 	const [userPasscode, setUserPasscode] = useState('');
+	const [invalidEmail, setInvalidEmail] = useState(false);
+	const [invalidPassword, setInvalidPassword] = useState(false);
 
 	async function onLogInSubmit() {
-		const response = await axios.post('/api/user/login', {
-			userEmail,
-			userPasscode,
-		});
+		const validEmail = validateEmail(userEmail);
 
-		if (response.data.loginSuccess) {
-			props.updateUserStatus({ loggedIn: true });
-			history.push('/contacts');
+		if (validEmail) {
+			const response = await axios.post('/api/user/login', {
+				userEmail,
+				userPasscode,
+			});
+
+			if (response.data.loginSuccess) {
+				props.updateUserStatus({ loggedIn: true });
+				history.push('/contacts');
+			}
 		}
+	}
+
+	function validateEmail(email) {
+		const emailTest = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return emailTest.test(email.toLowerCase());
 	}
 
 	return (
@@ -31,19 +42,21 @@ function LoginPage(props) {
 			</div>
 			<div className='col xs-col-4'>
 				<div className='xs-p6'>
-					<h3 style={{ color: 'darkcyan' }}>Please Log In</h3>
+					<h3 style={{ color: 'grey' }}>Log In</h3>
 					<Form className='xs-pt6' onSubmit={onLogInSubmit}>
+						{invalidEmail && <span className='text-red'>Invalid Email!</span>}
 						<FormInput
 							placeholder='Email'
 							value={userEmail}
 							onChange={(e) => setUserEmail(e.target.value)}
 						/>
+						{invalidPassword && <span className='text-red'>Invalid Password!</span>}
 						<FormInput
 							placeholder='Password'
 							value={userPasscode}
 							onChange={(e) => setUserPasscode(e.target.value)}
 						/>
-						<Button primary>Log In</Button>
+						<Button>Log In</Button>
 					</Form>
 				</div>
 				<div style={{ marginTop: '3em' }}>
