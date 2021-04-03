@@ -36,8 +36,17 @@ function LoginPage(props) {
 	return (
 		<div className='clearfix'>
 			<div className='col xs-col-8'>
-				<div style={{ height: '100vh', backgroundColor: 'skyblue' }}>
-					<h3>KonnectCRM</h3>
+				<div style={{ height: '100vh', backgroundColor: 'skyblue' }} className=''>
+					<h1
+						style={{
+							paddingTop: '25%',
+							fontSize: ' 5em',
+							color: 'black',
+						}}
+						className='fredoka-one-font'
+					>
+						SimpleCRM
+					</h1>
 				</div>
 			</div>
 			<div className='col xs-col-4'>
@@ -63,7 +72,7 @@ function LoginPage(props) {
 					<h4>
 						Don't have an account yet?
 						<span>
-							<Link to='/create-account'> Create account.</Link>
+							<Link to='/create-account'> Create an account.</Link>
 						</span>
 					</h4>
 				</div>
