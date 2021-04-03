@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Menu, Button, Header, Input, Table } from 'semantic-ui-react';
+import { Menu, Header, Input, Table } from 'semantic-ui-react';
 import ContactModal from '../components/ContactModal';
 import Contact from '../components/Contact';
 import axios from 'axios';
@@ -52,7 +52,8 @@ function Contacts() {
 					</Menu.Item>
 					<Menu.Item>
 						<button
-							className='xs-p1 modal-button'
+							bp='padding--sm'
+							className='modal-button'
 							onClick={() => setShowContactModal(true)}
 						>
 							+ New Contact
