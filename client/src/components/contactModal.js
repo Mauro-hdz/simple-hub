@@ -1,124 +1,123 @@
-import React, { Component } from 'react';
-import { Button, Modal, Form, Grid, Icon} from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Button, Modal, Form, Grid, Icon } from 'semantic-ui-react';
 import InputMask from 'react-input-mask';
 import axios from 'axios';
 
-class ContactModal extends Component {
-    constructor(props) {
-        super(props);
+function ContactModal(props) {
+	const [firstName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
+	const [name, setName] = useState('');
+	const [title, setTitle] = useState('');
+	const [phoneNumber, setPhoneNumber] = useState('');
+	const [email, setEmail] = useState('');
 
-        this.onChangeFirstName = this.onChangeFirstName.bind(this);
-        this.onChangeLastName = this.onChangeLastName.bind(this);
-        this.onChangeTitle = this.onChangeTitle.bind(this);
-        this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onClickSubmit = this.onClickSubmit.bind(this);
+	function onChangeFirstName(e) {
+		setFirstName(e.target.value);
+		setName(e.target.value + ' ' + lastName);
+	}
 
-        this.state = {
-            firstName: '',
-            lastName: '',
-            name: '',
-            title: '',
-            phoneNumber: '',
-            email: ''
-        }
-    }
+	function onChangeLastName(e) {
+		setLastName(e.target.value);
+		setName(firstName + ' ' + e.target.value);
+	}
 
-    onChangeFirstName(e) {
-        this.setState({
-            firstName: e.target.value,
-            name: e.target.value + ' ' + this.state.lastName
-        })
-    };
+	function onChangeTitle(e) {
+		setTitle(e.target.value);
+	}
 
-    onChangeLastName(e) {
-        this.setState({
-            lastName: e.target.value,
-            name: this.state.firstName + ' ' + e.target.value
-        })
-    };
+	function onChangePhoneNumber(e) {
+		setPhoneNumber(e.target.value);
+	}
 
-    onChangeTitle(e) {
-        this.setState({
-            title: e.target.value
-        })
-    };
+	function onChangeEmail(e) {
+		setEmail(e.target.value);
+	}
 
-    onChangePhoneNumber(e) {
-        this.setState({
-            phoneNumber: e.target.value
-        })
-    };
+	function onClickSubmit() {
+		const contact = {
+			name,
+			title,
+			email,
+			phoneNumber,
+		};
+		axios
+			.post('/api/contact/add', contact)
+			.then((res) => {
+				setFirstName('');
+				setLastName('');
+				setName('');
+				setTitle('');
+				setPhoneNumber('');
+				setEmail('');
 
-    onChangeEmail(e) {
-        this.setState({
-            email: e.target.value
-        })
-    };
+				props.rerenderParent();
+			})
+			.catch((err) => {
+				console.log('Error: ', err);
+			});
+	}
 
-    onClickSubmit() {
-        const contact = {
-            name: this.state.name,
-            title: this.state.title,
-            email: this.state.email,
-            phoneNumber: this.state.phoneNumber
-        };
-        axios.post('/api/contact/add', contact)
-        .then(res => {
-            this.setState({
-                firstName: '',
-                lastName: '',
-                name: '',
-                title: '',
-                phoneNumber: '',
-                email: ''
-            });
-            console.log(res)
-            this.props.rerenderParent();
-
-        })
-        .catch(err => {
-            console.log('Error: ', err)
-        })
-    };
-
-    render() {
-        return (
-            <Modal trigger={this.props.trigger} size='tiny'>
-                <Modal.Header>Add A New Contact</Modal.Header>
-                <Modal.Content>
-                    <Form>
-                        <Form.Group>
-                            <Form.Input value={this.state.firstName} onChange={this.onChangeFirstName} label='First Name' placeholder='First Name' />
-                            <Form.Input value={this.state.lastName} onChange={this.onChangeLastName} label='Last Name' placeholder='Last Name' />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Input value={this.state.title} onChange={this.onChangeTitle} label='Job Title' placeholder='i.e accountant' />
-                        </Form.Group>
-                        <Form.Group>
-                            <Grid.Row>
-                                <Grid.Column className='ui field' width={12}>
-                                <label>Phone Number</label>
-                                <Form.Input value={this.state.phoneNumber} onChange={this.onChangePhoneNumber} placeholder='(100)-100-1000' as={InputMask} mask='(999)-999-9999' />
-                                </Grid.Column>
-                            </Grid.Row>
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Input value={this.state.email} onChange={this.onChangeEmail} label='Email' placeholder='Parker@StarkIndustries.com' />
-                        </Form.Group>
-                    </Form>
-                    <Modal.Actions>
-                        {/* <Button color='red'>
+	return (
+		<Modal open={props.showContactModal} size='tiny'>
+			<Modal.Header>Add A New Contact</Modal.Header>
+			<Modal.Content>
+				<Form>
+					<Form.Group>
+						<Form.Input
+							value={firstName}
+							onChange={onChangeFirstName}
+							label='First Name'
+							placeholder='First Name'
+						/>
+						<Form.Input
+							value={lastName}
+							onChange={onChangeLastName}
+							label='Last Name'
+							placeholder='Last Name'
+						/>
+					</Form.Group>
+					<Form.Group>
+						<Form.Input
+							value={title}
+							onChange={onChangeTitle}
+							label='Job Title'
+							placeholder='i.e accountant'
+						/>
+					</Form.Group>
+					<Form.Group>
+						<Grid.Row>
+							<Grid.Column className='ui field' width={12}>
+								<label>Phone Number</label>
+								<Form.Input
+									value={phoneNumber}
+									onChange={onChangePhoneNumber}
+									placeholder='(100)-100-1000'
+									as={InputMask}
+									mask='(999)-999-9999'
+								/>
+							</Grid.Column>
+						</Grid.Row>
+					</Form.Group>
+					<Form.Group>
+						<Form.Input
+							value={email}
+							onChange={onChangeEmail}
+							label='Email'
+							placeholder='Parker@StarkIndustries.com'
+						/>
+					</Form.Group>
+				</Form>
+				<Modal.Actions>
+					{/* <Button color='red'>
                             <Icon name='remove' /> Cancel
                         </Button> */}
-                        <Button onClick={this.onClickSubmit} color='green'>
-                            <Icon name='checkmark' /> Submit
-                        </Button>
-                    </Modal.Actions>
-                </Modal.Content>
-            </Modal>
-        )
-    }
-};
+					<Button onClick={onClickSubmit} color='green'>
+						<Icon name='checkmark' /> Submit
+					</Button>
+				</Modal.Actions>
+			</Modal.Content>
+		</Modal>
+	);
+}
 
 export default ContactModal;

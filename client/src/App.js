@@ -6,7 +6,7 @@ import './App.css';
 import Sidebar from './components/Sidebar';
 import Nav from './components/Navbar';
 
-import Contacts from './pages/contacts';
+import Contacts from './pages/Contacts';
 import Meetings from './pages/meetings';
 import Tasks from './pages/tasks';
 import EditMeeting from './pages/editMeeting';
