@@ -25,15 +25,18 @@ function LoginPage(props) {
 	return (
 		<Container
 			style={{
-				paddingTop: '10%',
+				// paddingTop: '5%',
 				backgroundColor: 'lightgrey',
 				width: '100vw',
 				height: '100vh',
 			}}
 		>
-			<Grid centered>
-				<GridRow>
-					<GridColumn width={4}>
+			<Grid>
+				<GridRow style={{ height: '100vh' }}>
+					<GridColumn width={10}>
+						<div style={{ backgroundColor: 'lightblue', height: '100%' }}></div>
+					</GridColumn>
+					<GridColumn width={5}>
 						<div>
 							<h3 style={{ color: 'blue' }}>Please Log In</h3>
 							<Form onSubmit={onLogInSubmit}>
