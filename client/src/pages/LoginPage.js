@@ -34,9 +34,9 @@ function LoginPage(props) {
 	}
 
 	return (
-		<div className='clearfix'>
-			<div className='col xs-col-8'>
-				<div style={{ height: '100vh', backgroundColor: 'skyblue' }} className=''>
+		<div bp='grid'>
+			<div bp='8'>
+				<div style={{ height: '100vh', backgroundColor: 'skyblue' }}>
 					<h1
 						style={{
 							paddingTop: '25%',
@@ -49,10 +49,10 @@ function LoginPage(props) {
 					</h1>
 				</div>
 			</div>
-			<div className='col xs-col-4'>
-				<div className='xs-p6'>
+			<div bp='4'>
+				<div bp='padding--lg' style={{ marginTop: '10em' }}>
 					<h2 style={{ color: 'grey' }}>Log In</h2>
-					<Form className='xs-pt6' onSubmit={onLogInSubmit}>
+					<Form bp='padding-top--lg' onSubmit={onLogInSubmit}>
 						{invalidEmail && <span className='text-red'>Invalid Email!</span>}
 						<FormInput
 							placeholder='Email'
@@ -65,7 +65,7 @@ function LoginPage(props) {
 							value={userPasscode}
 							onChange={(e) => setUserPasscode(e.target.value)}
 						/>
-						<Button>Log In</Button>
+						<Button primary>Log In</Button>
 					</Form>
 				</div>
 				<div style={{ marginTop: '3em' }}>

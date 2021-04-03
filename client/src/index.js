@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-// import 'bf-solid/dist/solid.latest.css';
 import 'semantic-ui-css/semantic.min.css';
+import 'blueprint-css/dist/blueprint.min.css';
+import './App.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

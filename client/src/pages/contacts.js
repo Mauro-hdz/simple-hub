@@ -51,13 +51,12 @@ function Contacts() {
 						</Header>
 					</Menu.Item>
 					<Menu.Item>
-						<Button
-							content='+ New Contact'
-							color='orange'
-							floated='left'
-							inverted
+						<button
+							className='xs-p1 modal-button'
 							onClick={() => setShowContactModal(true)}
-						/>
+						>
+							+ New Contact
+						</button>
 					</Menu.Item>
 					<Menu.Menu position='right'>
 						<Menu.Item position='right'>

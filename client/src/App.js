@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import './App.css';
+// import './App.css';
 
 import Sidebar from './components/Sidebar';
 import Nav from './components/Navbar';
@@ -17,7 +17,7 @@ import CreateAccount from './pages/CreateAccount';
 class App extends Component {
 	state = {
 		user: {
-			loggedIn: false,
+			loggedIn: true,
 		},
 		visible: true,
 		container: 'no-left-margin',

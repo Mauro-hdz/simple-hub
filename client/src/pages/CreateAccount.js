@@ -47,9 +47,9 @@ function CreateAccount() {
 	}
 
 	return (
-		<div className='clearfix' style={{ backgroundColor: 'skyblue', height: '100vh' }}>
-			<div className='col xs-col-4 xs-offset-4'>
-				<div className='xs-mt6'>
+		<div bp='grid' style={{ backgroundColor: 'skyblue', height: '100vh' }}>
+			<div bp='4 offset-5'>
+				<div style={{ marginTop: '7em' }}>
 					<Card style={{ padding: '5em', width: '100%' }}>
 						<CardHeader style={{ color: 'grey' }}>Create Your Account</CardHeader>
 						<CardContent>
