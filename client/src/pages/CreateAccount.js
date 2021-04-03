@@ -23,11 +23,12 @@ function CreateAccount() {
 
 	async function onSubmitCreateAccount() {
 		const validEmail = validateEmail(userEmail);
+		const lowerCaseEmail = userEmail.toLowerCase();
 
 		if (validEmail) {
 			if (userPasscode != null) {
 				const userInput = {
-					userEmail,
+					lowerCaseEmail,
 					userPasscode,
 				};
 
@@ -46,7 +47,7 @@ function CreateAccount() {
 	}
 
 	return (
-		<div className='clearfix'>
+		<div className='clearfix' style={{ backgroundColor: 'skyblue', height: '100vh' }}>
 			<div className='col xs-col-4 xs-offset-4'>
 				<div className='xs-mt6'>
 					<Card style={{ padding: '5em', width: '100%' }}>

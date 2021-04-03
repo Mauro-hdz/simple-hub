@@ -51,7 +51,7 @@ function LoginPage(props) {
 			</div>
 			<div className='col xs-col-4'>
 				<div className='xs-p6'>
-					<h3 style={{ color: 'grey' }}>Log In</h3>
+					<h2 style={{ color: 'grey' }}>Log In</h2>
 					<Form className='xs-pt6' onSubmit={onLogInSubmit}>
 						{invalidEmail && <span className='text-red'>Invalid Email!</span>}
 						<FormInput
