@@ -7,6 +7,7 @@ const Nav = (props) => {
 
 	function handleLogoutClick() {
 		props.updateUserStatus({ loggedIn: false });
+		localStorage.clear();
 		history.push('/');
 	}
 

@@ -23,6 +23,8 @@ function LoginPage(props) {
 
 		if (response.data.loginSuccess) {
 			props.updateUserStatus({ loggedIn: true });
+			const jsonData = JSON.stringify(response.data);
+			localStorage.setItem('data', jsonData);
 			history.push('/contacts');
 		} else {
 			if (response.data.message === 'account not found') {

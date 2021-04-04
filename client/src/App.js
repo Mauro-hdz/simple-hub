@@ -23,6 +23,18 @@ class App extends Component {
 		container: 'no-left-margin',
 	};
 
+	componentDidMount() {
+		const foundData = localStorage.getItem('data');
+		if (foundData) {
+			const data = JSON.parse(foundData);
+			this.setState({
+				user: {
+					loggedIn: data.loginSuccess,
+				},
+			});
+		}
+	}
+
 	onClickNav = () => {
 		if (this.state.visible === true) {
 			this.setState({ visible: false, container: 'ui container' });
