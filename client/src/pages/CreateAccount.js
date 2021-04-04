@@ -15,29 +15,31 @@ import {
 function CreateAccount() {
 	const history = useHistory();
 
-	const [userEmail, setUserEmail] = useState(null);
-	const [userPasscode, setUserPasscode] = useState(null);
+	const [userEmail, setUserEmail] = useState('');
+	const [userPasscode, setUserPasscode] = useState('');
 
 	const [invalidEmail, setInvalidEmail] = useState(false);
 	const [invalidPassword, setInvalidPassword] = useState(false);
 
 	async function onSubmitCreateAccount() {
+		setInvalidEmail(false);
+		setInvalidPassword(false);
 		const validEmail = validateEmail(userEmail);
 		const lowerCaseEmail = userEmail.toLowerCase();
 
-		if (validEmail) {
-			if (userPasscode != null) {
-				const userInput = {
-					userEmail: lowerCaseEmail,
-					userPasscode,
-				};
+		if (validEmail === false) setInvalidEmail(true);
 
-				const response = await axios.post('/api/user/create-account', userInput);
+		if (userPasscode.length <= 1) setInvalidPassword(true);
 
-				if (response) history.push('/');
-			}
-		} else {
-			setInvalidEmail(true);
+		if (validEmail && userPasscode.length > 1) {
+			const userInput = {
+				userEmail: lowerCaseEmail,
+				userPasscode,
+			};
+
+			const response = await axios.post('/api/user/create-account', userInput);
+
+			if (response) history.push('/');
 		}
 	}
 

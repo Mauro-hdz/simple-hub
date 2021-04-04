@@ -13,24 +13,24 @@ function LoginPage(props) {
 	const [invalidPassword, setInvalidPassword] = useState(false);
 
 	async function onLogInSubmit() {
-		const validEmail = validateEmail(userEmail);
+		setInvalidEmail(false);
+		setInvalidPassword(false);
 
-		if (validEmail) {
-			const response = await axios.post('/api/user/login', {
-				userEmail,
-				userPasscode,
-			});
+		const response = await axios.post('/api/user/login', {
+			userEmail,
+			userPasscode,
+		});
 
-			if (response.data.loginSuccess) {
-				props.updateUserStatus({ loggedIn: true });
-				history.push('/contacts');
+		if (response.data.loginSuccess) {
+			props.updateUserStatus({ loggedIn: true });
+			history.push('/contacts');
+		} else {
+			if (response.data.message === 'account not found') {
+				setInvalidEmail(true);
+			} else if (response.data.message === 'wrong password') {
+				setInvalidPassword(true);
 			}
 		}
-	}
-
-	function validateEmail(email) {
-		const emailTest = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		return emailTest.test(email.toLowerCase());
 	}
 
 	return (
