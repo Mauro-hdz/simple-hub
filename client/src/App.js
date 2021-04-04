@@ -17,7 +17,7 @@ import CreateAccount from './pages/CreateAccount';
 class App extends Component {
 	state = {
 		user: {
-			loggedIn: true,
+			loggedIn: false,
 		},
 		visible: true,
 		container: 'no-left-margin',
