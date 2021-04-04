@@ -7,7 +7,7 @@ const TaskCard = (props) => {
 
 	async function handleCheckboxChange(e) {
 		setChecked(!checked);
-		const response = await axios.put('/api/task/update/' + props.id, {
+		await axios.put('/api/task/update/' + props.id, {
 			task: props.task,
 			category: props.category,
 			completed: !checked,

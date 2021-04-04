@@ -18,13 +18,8 @@ function Contacts() {
 	}
 	useEffect(fetchContactDataEffect, [showContactModal]);
 
-	function deleteContact(id) {
-		axios
-			.delete(`/api/contact/delete/${id}`)
-			.then((res) => {
-				this.rerender();
-			})
-			.catch((err) => console.log('Contact Delete Error: ' + err));
+	async function deleteContact(id) {
+		await axios.delete(`/api/contact/delete/${id}`);
 	}
 
 	return (

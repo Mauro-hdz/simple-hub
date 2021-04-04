@@ -11,49 +11,32 @@ class Meetings extends Component {
 	};
 
 	componentDidMount() {
-		console.log('component did mount');
 		axios
 			.get('/api/meeting/all')
 			.then((res) => {
-				console.log(res, 'Meetings');
 				this.setState({
 					meetings: res.data.data,
 				});
 			})
 			.catch((err) => {
-				console.log('Error: ', err);
+				console.error(err);
 			});
 	}
 
-	// componentDidUpdate() {
-	// 	console.log('component did update');
-	// 	axios
-	// 		.get('/api/meeting/all')
-	// 		.then((res) => {
-	// 			console.log(res, 'Meetings');
-	// 			this.setState({
-	// 				meetings: res.data.data,
-	// 			});
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log('Error: ', err);
-	// 		});
-	// }
-
-	// rerender = () => {
-	// 	console.log('rerender');
-	// 	axios
-	// 		.get('/api/meeting/all')
-	// 		.then((res) => {
-	// 			console.log(res, 'Meetings');
-	// 			this.setState({
-	// 				meetings: res.data.data,
-	// 			});
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log('Error: ', err);
-	// 		});
-	// };
+	componentDidUpdate(prevProps, prevState) {
+		if (this.state.showMeetingModal !== prevState.showMeetingModal) {
+			axios
+				.get('/api/meeting/all')
+				.then((res) => {
+					this.setState({
+						meetings: res.data.data,
+					});
+				})
+				.catch((err) => {
+					console.error(err);
+				});
+		}
+	}
 
 	render() {
 		return (

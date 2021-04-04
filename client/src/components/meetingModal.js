@@ -64,14 +64,13 @@ class MeetingModal extends Component {
 	};
 
 	onChangeAmPm = (e, { value }) => {
-		console.log(value);
 		this.setState({
 			AmPm: value,
 			time: this.state.hour + ' ' + value,
 		});
 	};
 
-	onClickSubmit = (e) => {
+	onClickSubmit = async (e) => {
 		const meeting = {
 			subject: this.state.subject,
 			location: this.state.location,
@@ -79,24 +78,20 @@ class MeetingModal extends Component {
 			time: this.state.time,
 			attending: this.state.people.join(', '),
 		};
-		axios
-			.post('/api/meeting/add', meeting)
-			.then((res) => {
-				this.setState({
-					subject: '',
-					location: '',
-					date: '',
-					time: '',
-					hour: '',
-					AmPm: '',
-					person: '',
-					people: [],
-				});
-				console.log(res);
-			})
-			.catch((err) => {
-				console.log(err);
+		const response = await axios.post('/api/meeting/add', meeting);
+
+		if (response) {
+			this.setState({
+				subject: '',
+				location: '',
+				date: '',
+				time: '',
+				hour: '',
+				AmPm: '',
+				person: '',
+				people: [],
 			});
+		}
 	};
 
 	render() {

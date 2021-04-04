@@ -26,7 +26,6 @@ function TaskModal(props) {
 		if (response) {
 			setTask('');
 			setCategory('');
-			props.rerenderParent();
 		}
 	}
 

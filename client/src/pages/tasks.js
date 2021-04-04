@@ -21,27 +21,25 @@ class Tasks extends Component {
 			.catch((err) => console.log('GET Request Error: ', err));
 	}
 
-	rerender = () => {
-		axios
-			.get('/api/task/all')
-			.then((res) => {
-				this.setState({
-					tasks: res.data.data,
-				});
-			})
-			.catch((err) => console.log('GET Request Error: ', err));
-	};
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.showTaskModal !== this.state.showTaskModal) {
+			axios
+				.get('/api/task/all')
+				.then((res) => {
+					this.setState({
+						tasks: res.data.data,
+					});
+				})
+				.catch((err) => console.log('GET Request Error: ', err));
+		}
+	}
 
-	deleteTask = (id) => {
-		console.log(id);
-
-		axios
-			.delete(`/api/task/delete/${id}`)
-			.then((res) => {
-				console.log(res);
-				this.rerender();
-			})
-			.catch((err) => console.log('Task Delete Error: ' + err));
+	deleteTask = async (id) => {
+		const response = await axios.delete(`/api/task/delete/${id}`);
+		if (response) {
+			const newTasks = this.state.tasks.filter((task) => task.id !== id);
+			this.setState({ tasks: newTasks });
+		}
 	};
 
 	render() {
@@ -49,7 +47,6 @@ class Tasks extends Component {
 			<div>
 				<TaskModal
 					showTaskModal={this.state.showTaskModal}
-					rerenderParent={this.rerender}
 					onClose={() => this.setState({ showTaskModal: false })}
 				/>
 				<div bp='grid'>
