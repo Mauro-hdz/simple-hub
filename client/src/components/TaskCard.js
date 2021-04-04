@@ -1,13 +1,16 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Grid, Icon, Checkbox } from 'semantic-ui-react';
 
 const TaskCard = (props) => {
+	const [checked, setChecked] = useState(props.checked);
+
 	async function handleCheckboxChange(e) {
+		setChecked(!checked);
 		const response = await axios.put('/api/task/update/' + props.id, {
 			task: props.task,
 			category: props.category,
-			completed: props.checked,
+			completed: !checked,
 		});
 		console.log(response);
 	}
@@ -20,7 +23,7 @@ const TaskCard = (props) => {
 						<Grid.Column>
 							<Checkbox
 								label='Completed'
-								checked={props.checked}
+								checked={checked}
 								onChange={handleCheckboxChange}
 							/>
 						</Grid.Column>
