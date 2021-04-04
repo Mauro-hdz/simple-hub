@@ -7,9 +7,11 @@ import axios from 'axios';
 class Meetings extends Component {
 	state = {
 		meetings: [],
+		showMeetingModal: false,
 	};
 
 	componentDidMount() {
+		console.log('component did mount');
 		axios
 			.get('/api/meeting/all')
 			.then((res) => {
@@ -23,24 +25,43 @@ class Meetings extends Component {
 			});
 	}
 
-	rerender = () => {
-		console.log('rerender');
-		axios
-			.get('/api/meeting/all')
-			.then((res) => {
-				console.log(res, 'Meetings');
-				this.setState({
-					meetings: res.data.data,
-				});
-			})
-			.catch((err) => {
-				console.log('Error: ', err);
-			});
-	};
+	// componentDidUpdate() {
+	// 	console.log('component did update');
+	// 	axios
+	// 		.get('/api/meeting/all')
+	// 		.then((res) => {
+	// 			console.log(res, 'Meetings');
+	// 			this.setState({
+	// 				meetings: res.data.data,
+	// 			});
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log('Error: ', err);
+	// 		});
+	// }
+
+	// rerender = () => {
+	// 	console.log('rerender');
+	// 	axios
+	// 		.get('/api/meeting/all')
+	// 		.then((res) => {
+	// 			console.log(res, 'Meetings');
+	// 			this.setState({
+	// 				meetings: res.data.data,
+	// 			});
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log('Error: ', err);
+	// 		});
+	// };
 
 	render() {
 		return (
 			<div>
+				<MeetingModal
+					showModal={this.state.showMeetingModal}
+					onClose={() => this.setState({ showMeetingModal: false })}
+				/>
 				<Grid>
 					<Grid.Row>
 						<Menu secondary>
@@ -50,14 +71,13 @@ class Meetings extends Component {
 								</Header>
 							</Menu.Item>
 							<Menu.Item>
-								<MeetingModal
-									rerenderParent={this.rerender}
-									trigger={
-										<button bp='padding--sm' className='modal-button'>
-											+ New Meeting
-										</button>
-									}
-								/>
+								<button
+									bp='padding--sm'
+									className='modal-button'
+									onClick={() => this.setState({ showMeetingModal: true })}
+								>
+									+ New Meeting
+								</button>
 							</Menu.Item>
 						</Menu>
 					</Grid.Row>
@@ -65,20 +85,17 @@ class Meetings extends Component {
 				<Grid>
 					<Grid.Row>
 						{/* Render all meeting cards here */}
-						{this.state.meetings.map((meeting) => {
-							console.log(meeting);
-							return (
-								<MeetingCard
-									subject={meeting.subject}
-									location={meeting.location}
-									date={meeting.date}
-									time={meeting.time}
-									attending={meeting.attending}
-									id={meeting.id}
-									key={meeting.id}
-								/>
-							);
-						})}
+						{this.state.meetings.map((meeting) => (
+							<MeetingCard
+								subject={meeting.subject}
+								location={meeting.location}
+								date={meeting.date}
+								time={meeting.time}
+								attending={meeting.attending}
+								id={meeting.id}
+								key={meeting.id}
+							/>
+						))}
 					</Grid.Row>
 				</Grid>
 			</div>

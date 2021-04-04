@@ -16,16 +16,7 @@ function Contacts() {
 				console.error(err);
 			});
 	}
-	useEffect(fetchContactDataEffect, []);
-
-	function rerender(e) {
-		axios
-			.get('/api/contact/all')
-			.then((res) => setData(res.data.data))
-			.catch((err) => {
-				console.log(err);
-			});
-	}
+	useEffect(fetchContactDataEffect, [showContactModal]);
 
 	function deleteContact(id) {
 		axios
@@ -40,7 +31,6 @@ function Contacts() {
 		<>
 			<ContactModal
 				showContactModal={showContactModal}
-				rerenderParent={rerender}
 				onClose={() => setShowContactModal(false)}
 			/>
 			<div>
