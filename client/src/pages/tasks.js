@@ -47,6 +47,11 @@ class Tasks extends Component {
 	render() {
 		return (
 			<div>
+				<TaskModal
+					showTaskModal={this.state.showTaskModal}
+					rerenderParent={this.rerender}
+					onClose={() => this.setState({ showTaskModal: false })}
+				/>
 				<div bp='grid'>
 					<div bp='12'>
 						<Menu secondary>
@@ -56,14 +61,15 @@ class Tasks extends Component {
 								</Header>
 							</Menu.Item>
 							<Menu.Item>
-								<TaskModal
-									rerenderParent={this.rerender}
-									trigger={
-										<button bp='padding--sm' className='modal-button'>
-											+ New Task
-										</button>
-									}
-								/>
+								<button
+									bp='padding--sm'
+									className='modal-button'
+									onClick={() => {
+										this.setState({ showTaskModal: !this.state.showTaskModal });
+									}}
+								>
+									+ New Task
+								</button>
 							</Menu.Item>
 						</Menu>
 					</div>

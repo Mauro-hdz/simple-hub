@@ -31,7 +31,7 @@ function TaskModal(props) {
 	}
 
 	return (
-		<Modal open={props.showTaskModal} size='tiny'>
+		<Modal open={props.showTaskModal} size='tiny' closeOnDimmerClick onClose={props.onClose}>
 			<Modal.Header>Add A New Task</Modal.Header>
 			<Modal.Content>
 				<Form>

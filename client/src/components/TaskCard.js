@@ -12,7 +12,6 @@ const TaskCard = (props) => {
 			category: props.category,
 			completed: !checked,
 		});
-		console.log(response);
 	}
 
 	return (
