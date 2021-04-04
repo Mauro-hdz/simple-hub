@@ -16,7 +16,7 @@ def serve(path):
         return send_from_directory(app.static_folder, 'index.html')
 
 
-ENV = 'dev'
+ENV = 'prod'
 
 if ENV == 'dev':
     app.debug = True
